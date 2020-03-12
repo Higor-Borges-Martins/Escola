@@ -164,12 +164,12 @@ public class TesteTDD {
 //        fpdao.facadeCadastrarProfessor(prof);
 //
 //    }
-    @Test
-    public void testListarProfessor() throws Exception{
-        for(Professor perc: fpdao.facadeListarProfessor()){
-            System.out.println(perc);
-        }
-    }
+//    @Test
+//    public void testListarProfessor() throws Exception{
+//        for(Professor perc: fpdao.facadeListarProfessor()){
+//            System.out.println(perc);
+//        }
+//    }
 //    @Test
 //    public void testBuscarProfessor() throws Exception{
 //        System.out.println(fpdao.facadeBuscarProfessor("123.456.789-10"));
@@ -188,29 +188,38 @@ public class TesteTDD {
 //        fpdao.facadeRemoverProfessor(prof);
 //    }
     
+//    @Test
+//    public void testCadastrarLivro() throws ParseException{
+//        
+//        System.out.println("Titulo do Livro");
+//        livro.setTitulo("Teste");
+//        System.out.println("Nome do Autor");
+//        livro.setAutor("Testador");
+//        System.out.println("Ano de Publicação");
+//        livro.setAnoDePublicacao(conversor.stringParaData("11/11/1111"));
+//        System.out.println("Editora");
+//        livro.setEditora("Top crow");
+//        System.out.println("Edição");
+//        livro.setNumeroDeEdicao("6 °");
+//        System.out.println("Informe o número de copias");
+//        livro.setCopias(1);
+//        ldao.salvarLivro(livro);
+//    }
+//    
+//    @Test
+//    public void testListarLivros() throws Exception{
+//        for(Livro perc: ldao.listarLivro())
+//            System.out.println(perc);
+//    }
     @Test
-    public void testCadastrarLivro() throws ParseException{
-        
-        System.out.println("Titulo do Livro");
-        livro.setTitulo("Teste");
-        System.out.println("Nome do Autor");
-        livro.setAutor("Testador");
-        System.out.println("Ano de Publicação");
-        livro.setAnoDePublicacao(conversor.stringParaData("11/11/1111"));
-        System.out.println("Editora");
-        livro.setEditora("Top crow");
-        System.out.println("Edição");
-        livro.setNumeroDeEdicao("6 °");
-        System.out.println("Informe o número de copias");
-        livro.setCopias(1);
-        ldao.salvarLivro(livro);
+    public void testBuscarLivro() throws Exception{
+        System.out.println(ldao.buscarLivro("Teste"));
     }
     
     @Test
-    public void testListarLivros(){
-        
-        ldao.listarLivro(){
-        
-    }
+    public void testAtualisarQuantidadeLivro() throws Exception{
+        livro = ldao.buscarLivro("Teste");
+        livro.setCopias();
+        ldao.atualisarQuantidadeLivro(ldao.buscarLivro("Teste"));
     }
 }
