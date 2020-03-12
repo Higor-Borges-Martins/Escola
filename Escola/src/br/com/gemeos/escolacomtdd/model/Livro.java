@@ -34,7 +34,7 @@ public class Livro {
     @Column( length = 3, nullable = false)
     String numeroDeEdicao;
     @Column(length = 3, nullable = true)
-    int Copias;
+    double Copias;
 
     public long getIdLivro() {
         return idLivro;
@@ -84,13 +84,15 @@ public class Livro {
         this.numeroDeEdicao = numeroDeEdicao;
     }
 
-    public int getCopias() {
+    public double getCopias() {
         return Copias;
     }
 
-    public void setCopias(int numeroDeCopias) {
-        this.Copias = numeroDeCopias;
+    public void setCopias(double Copias) {
+        this.Copias = Copias;
     }
+
+   
 
     @Override
     public String toString() {

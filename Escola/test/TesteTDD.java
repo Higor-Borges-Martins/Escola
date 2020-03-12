@@ -1,7 +1,6 @@
 
-import br.com.gemeos.escolacomtdd.dao.LivroDao;
-import br.com.gemeos.escolacomtdd.dao.ProfessorDao;
 import br.com.gemeos.escolacomtdd.facade.FacadeAluno;
+import br.com.gemeos.escolacomtdd.facade.FacadeLivro;
 import br.com.gemeos.escolacomtdd.facade.FacadeProfessor;
 import br.com.gemeos.escolacomtdd.model.Aluno;
 import br.com.gemeos.escolacomtdd.model.Endereco;
@@ -9,8 +8,6 @@ import br.com.gemeos.escolacomtdd.model.Livro;
 import br.com.gemeos.escolacomtdd.model.Professor;
 import br.com.gemeos.escolacomtdd.util.Conversor;
 import br.com.gemeos.escolacomtdd.util.CrudAluno;
-import java.io.IOException;
-import java.text.ParseException;
 import org.junit.Test;
 
 /*
@@ -33,7 +30,7 @@ public class TesteTDD {
     private Endereco endereco = new Endereco();
     private FacadeAluno fadao = new FacadeAluno();
     private FacadeProfessor fpdao = new FacadeProfessor();
-    private LivroDao ldao = new LivroDao();
+    private FacadeLivro fldao = new FacadeLivro();
     private Conversor conversor = new Conversor();
     private CrudAluno cruda = new CrudAluno();
 
@@ -192,7 +189,7 @@ public class TesteTDD {
 //    public void testCadastrarLivro() throws ParseException{
 //        
 //        System.out.println("Titulo do Livro");
-//        livro.setTitulo("Teste");
+//        livro.setTitulo("Teste2");
 //        System.out.println("Nome do Autor");
 //        livro.setAutor("Testador");
 //        System.out.println("Ano de Publicação");
@@ -203,23 +200,33 @@ public class TesteTDD {
 //        livro.setNumeroDeEdicao("6 °");
 //        System.out.println("Informe o número de copias");
 //        livro.setCopias(1);
-//        ldao.salvarLivro(livro);
+//        fldao.facadeCadastrarLivro(livro);
 //    }
 //    
 //    @Test
 //    public void testListarLivros() throws Exception{
-//        for(Livro perc: ldao.listarLivro())
+//        for(Livro perc: fldao.facadeListaLivro())
 //            System.out.println(perc);
 //    }
-    @Test
-    public void testBuscarLivro() throws Exception{
-        System.out.println(ldao.buscarLivro("Teste"));
-    }
+    
     
     @Test
     public void testAtualisarQuantidadeLivro() throws Exception{
-        livro = ldao.buscarLivro("Teste");
-        livro.setCopias();
-        ldao.atualisarQuantidadeLivro(ldao.buscarLivro("Teste"));
+        livro = fldao.facadeBuscarLivro("Teste");
+        livro.setCopias(livro.getCopias()+conversor.StringParaDouble("2"));
+        fldao.facadeAtualizarLivro(livro);
     }
+    
+    
+//    @Test
+//    public void testBuscarLivro() throws Exception{
+//        System.out.println(fldao.facadeBuscarLivro("Teste"));
+//    }
+    
+//    @Test
+//    public void testRemoverLivro() throws Exception{
+//        
+//        livro = fldao.facadeBuscarLivro("Teste2");
+//        fldao.facadeRemoverLivro(livro);
+//    }
 }

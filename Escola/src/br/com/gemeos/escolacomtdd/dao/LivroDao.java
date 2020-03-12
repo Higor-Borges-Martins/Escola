@@ -69,12 +69,45 @@ public class LivroDao {
         } catch (Exception e) {
             e.printStackTrace();
             throw new Exception(" Livro não encontrado!");
-        }finally{
+        } finally {
             PersistenceUtil.closeEntityManagerFactory();
         }
     }
-    
-    public void atualisarQuantidadeLivro(Livro l){
-        em = PersistenceUtil.createEntityManager();
+
+    public void atualisarQuantidadeLivro(Livro l) throws Exception {
+
+        try {
+
+            em = PersistenceUtil.createEntityManager();
+            em.getTransaction().begin();
+            em.merge(l);
+            em.getTransaction().commit();
+            System.err.println("Editado com suceso");
+        } catch (Exception e) {
+            e.printStackTrace();
+            em.getTransaction().rollback();
+            throw new Exception("Falha ao editar");
+        } finally {
+            PersistenceUtil.closeEntityManagerFactory();
+        }
+    }
+
+    public void removerLivro(Livro l) throws Exception {
+
+        try {
+            em = PersistenceUtil.createEntityManager();
+            em.getTransaction().begin();
+           l =  em.merge(l);
+            em.remove(l);
+            em.getTransaction().commit();
+            System.out.println("Removido com Sucesso");
+        } catch (Exception e) {
+            e.printStackTrace();
+            em.getTransaction().rollback();
+            throw new Exception("Falha ao remover");
+        }finally{
+            PersistenceUtil.closeEntityManagerFactory();
+        }
+
     }
 }
