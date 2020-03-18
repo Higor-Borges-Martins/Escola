@@ -10,7 +10,7 @@ package helloworldswing;
  * @author Pessoal
  */
 public class BalanssoTrimestral {
-
+    
     public static void main(String[] args) {
         //        int janeiro = 15000;
         //        int fevereiro = 23000;
@@ -258,12 +258,17 @@ public class BalanssoTrimestral {
 //        System.out.println(casa.statusDaCasa());
 //        casa.porta3.fechar();
 //        System.out.println(casa.statusDaCasa());
-        CasaHg casa = new CasaHg();
-        casa.pintarCasa("Verde");
-        casa.porta1.abrir();
-        casa.porta2.fechar();
-        casa.porta3.abrir();
-        System.out.println(casa.statusCasa());
-        System.out.println(casa.quantasPortasEstaoApertas());
+//        CasaHg casa = new CasaHg();
+//        casa.pintarCasa("Verde");
+//        casa.porta1.abrir();
+//        casa.porta2.fechar();
+//        casa.porta3.abrir();
+//        System.out.println(casa.statusCasa());
+//        System.out.println(casa.quantasPortasEstaoApertas());
+        ContaExecircio novaConta = new ContaExecircio();
+        novaConta.depositar(-100);
+        System.out.println(novaConta.getSaldo());
+        novaConta.sacar(110);
+        System.out.println(novaConta.getSaldo());
     }
 }

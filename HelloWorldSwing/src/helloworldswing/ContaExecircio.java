@@ -11,13 +11,47 @@ package helloworldswing;
  */
 public class ContaExecircio {
 
-    String titula;
-    int numero;
-    String agencia;
-    double saldo;
-    Data dataDeAbertura;
+    private String titula;
+    private int numero;
+    private String agencia;
+    private double saldo;
+    private Data dataDeAbertura;
+    private double limite = 50;
+
+    public void setTitula(String titula) {
+        this.titula = titula;
+    }
+
+    public String getTitula() {
+        return this.titula;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public void setAgencia(String agencia) {
+        this.agencia = agencia;
+    }
+
+    public String getAgencia() {
+        return this.agencia;
+    }
+
+    public void setData(Data dataDeAbertura) {
+        this.dataDeAbertura = dataDeAbertura;
+    }
+
+    public Data getData() {
+        return this.dataDeAbertura;
+    }
+
+    public double getSaldo() {
+        return this.saldo + this.limite;
+    }
 
     void sacar(double valor) {
+
         if (this.saldo > valor) {
             this.saldo -= valor;
         } else {
@@ -26,24 +60,29 @@ public class ContaExecircio {
     }
 
     void depositar(double valor) {
-        this.saldo += valor;
+        if (valor > 0) {
+            this.saldo += valor;
+        }else{
+            System.out.println("Valor invalido");
+        }
+
     }
-    
-    double calculaRendimento(){
+
+    double calculaRendimento() {
         this.saldo += (this.saldo * 0.1);
         return this.saldo;
     }
-    
-    String recuperarDadosParaImpressao(){
+
+    String recuperarDadosParaImpressao() {
         String dados = "Titular: " + this.titula;
         dados += "\nAgencia: " + this.agencia;
         dados += "\nNúmero: " + this.numero;
         dados += "\nData de Abertura: " + this.dataDeAbertura;
         dados += "\nSaldo: " + this.saldo;
         dados += "\nRendimento Mensal: " + this.calculaRendimento();
-       dados += "\nData de Abertura: " + this.dataDeAbertura.formatada();
+        dados += "\nData de Abertura: " + this.dataDeAbertura.formatada();
         return dados;
-        
+
     }
 
 }
