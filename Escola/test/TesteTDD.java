@@ -1,7 +1,9 @@
 
+import br.com.gemeos.escolacomtdd.dao.AluguelDao;
 import br.com.gemeos.escolacomtdd.facade.FacadeAluno;
 import br.com.gemeos.escolacomtdd.facade.FacadeLivro;
 import br.com.gemeos.escolacomtdd.facade.FacadeProfessor;
+import br.com.gemeos.escolacomtdd.model.Aluguel;
 import br.com.gemeos.escolacomtdd.model.Aluno;
 import br.com.gemeos.escolacomtdd.model.Endereco;
 import br.com.gemeos.escolacomtdd.model.Livro;
@@ -15,9 +17,6 @@ import org.junit.Test;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
-
 /**
  *
  * @author Pessoal
@@ -26,11 +25,13 @@ public class TesteTDD {
 
     private Aluno aluno = new Aluno();
     private Professor prof = new Professor();
+    private Aluguel alugar = new Aluguel();
     private Livro livro = new Livro();
     private Endereco endereco = new Endereco();
     private FacadeAluno fadao = new FacadeAluno();
     private FacadeProfessor fpdao = new FacadeProfessor();
     private FacadeLivro fldao = new FacadeLivro();
+    private AluguelDao alugarDao = new AluguelDao();
     private Conversor conversor = new Conversor();
     private CrudAluno cruda = new CrudAluno();
 
@@ -77,7 +78,6 @@ public class TesteTDD {
 //
 //        fadao.cadastrarAluno(aluno);
 //    }
-
 //    @Test
 //    public void testListarDeAlunos() throws Exception {
 //        for (Aluno perc : fadao.listarAlunos()) {
@@ -85,7 +85,6 @@ public class TesteTDD {
 //
 //        }
 //    }
-    
 //    @Test
 //    public void testBuscarAluno() throws Exception {
 //        System.out.println("cpf do aluno");
@@ -181,10 +180,9 @@ public class TesteTDD {
 //    
 //    @Test
 //    public void removerProfessor() throws Exception{
-//        prof = pdao.buscarProfessor("123.456.789-10");
+//        prof = fpdao.facadeBuscarProfessor("123.456.789-01");
 //        fpdao.facadeRemoverProfessor(prof);
 //    }
-    
 //    @Test
 //    public void testCadastrarLivro() throws ParseException{
 //        
@@ -208,25 +206,47 @@ public class TesteTDD {
 //        for(Livro perc: fldao.facadeListaLivro())
 //            System.out.println(perc);
 //    }
-    
-    
-    @Test
-    public void testAtualisarQuantidadeLivro() throws Exception{
-        livro = fldao.facadeBuscarLivro("Teste");
-        livro.setCopias(livro.getCopias()+conversor.StringParaDouble("2"));
-        fldao.facadeAtualizarLivro(livro);
-    }
-    
-    
+//    @Test
+//    public void testAtualisarQuantidadeLivro() throws Exception{
+//        livro = fldao.facadeBuscarLivro("Teste");
+//        livro.setCopias(livro.getCopias()+conversor.StringParaDouble("2"));
+//        fldao.facadeAtualizarLivro(livro);
+//    }
 //    @Test
 //    public void testBuscarLivro() throws Exception{
 //        System.out.println(fldao.facadeBuscarLivro("Teste"));
 //    }
-    
 //    @Test
 //    public void testRemoverLivro() throws Exception{
 //        
 //        livro = fldao.facadeBuscarLivro("Teste2");
 //        fldao.facadeRemoverLivro(livro);
 //    }
+    @Test
+    public void testAlugarLivro() throws Exception {
+        String resposta;
+        System.out.println("Aluno ou Professor?");
+        resposta = "Professor";
+        if (resposta == "Aluno") {
+            System.out.println("Informe CPF");
+            System.out.println(fadao.buscarAluno("123.456.789-10"));
+            alugar.setNomeIndividuo("testeComMatricula");
+            System.out.println("Titulo do Livro");
+            alugar.setTituloLivro("Teste");
+            livro = fldao.facadeBuscarLivro(alugar.getTituloLivro());
+            livro.setCopias(livro.getCopias() - 1);
+            fldao.facadeAtualizarLivro(livro);
+
+        } else {
+            System.out.println("Informe CPF");
+            System.out.println(fpdao.facadeBuscarProfessor("123.456.789-02"));
+            alugar.setNomeIndividuo("teste");
+            System.out.println("Titulo do Livro");
+            alugar.setTituloLivro("Teste");
+            livro = fldao.facadeBuscarLivro(alugar.getTituloLivro());
+            livro.setCopias(livro.getCopias() - 1);
+            System.out.println(conversor.stringParaData("27/03/2020"));
+        }
+
+    }
 }

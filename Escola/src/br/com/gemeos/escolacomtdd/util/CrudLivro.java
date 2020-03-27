@@ -59,7 +59,7 @@ public class CrudLivro {
                 ;
                 break;
             case "3":
-                System.out.println("Informe o nome do livro");
+                System.out.println("Informe o titulo do livro");
                 livro = fldao.facadeBuscarLivro(read.readLine());
                 System.out.println("Quantos livros");
                 livro.setCopias(livro.getCopias() + conversor.StringParaDouble(read.readLine()));
