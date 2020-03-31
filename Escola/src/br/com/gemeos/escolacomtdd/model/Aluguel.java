@@ -60,6 +60,11 @@ public class Aluguel {
     public void setDiaDoAluguel(Date diaDoAluguel) {
         this.diaDoAluguel = diaDoAluguel;
     }
+
+    @Override
+    public String toString() {
+        return "Aluguel{" + "registro=" + registro + ", tituloLivro=" + tituloLivro + ", nomeIndividuo=" + nomeIndividuo + ", diaDoAluguel=" + diaDoAluguel + '}';
+    }
     
     
 }

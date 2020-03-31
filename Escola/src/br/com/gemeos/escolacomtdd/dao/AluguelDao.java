@@ -8,8 +8,10 @@ package br.com.gemeos.escolacomtdd.dao;
 import br.com.gemeos.escolacomtdd.conection.PersistenceUtil;
 import br.com.gemeos.escolacomtdd.model.Aluguel;
 import br.com.gemeos.escolacomtdd.model.Livro;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 /**
  *
@@ -18,23 +20,66 @@ import javax.persistence.EntityManager;
 public class AluguelDao {
 
     EntityManager em;
+    Query query;
 
     public void alugarLivro(Aluguel alugar) {
         try {
-            
-        em = PersistenceUtil.createEntityManager();
-        em.getTransaction().begin();
-        em.persist(alugar);
-        em.getTransaction().commit();
+
+            em = PersistenceUtil.createEntityManager();
+            em.getTransaction().begin();
+            em.persist(alugar);
+            em.getTransaction().commit();
             System.out.println("Aluguel efetuado com sucesso");
         } catch (Exception e) {
             e.printStackTrace();
             em.getTransaction().rollback();
-        }finally{
+        } finally {
             PersistenceUtil.closeEntityManagerFactory();
         }
 
     }
 
+    public List<Aluguel> listarAlugueis() throws Exception {
 
+        try {
+
+            em = PersistenceUtil.createEntityManager();
+            em.getTransaction().begin();
+            query = em.createQuery("SELECT alugar FROM Aluguel alugar");
+            return query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception("Lista Vazia");
+        } finally {
+            PersistenceUtil.closeEntityManagerFactory();
+        }
+    }
+
+    public Aluguel pesquisarAluguel(long registro) throws Exception {
+        try {
+            em = PersistenceUtil.createEntityManager();
+            return em.find(Aluguel.class, registro);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception("Registro não encontrado");
+        } finally {
+            PersistenceUtil.closeEntityManagerFactory();
+        }
+    }
+    
+    public void DevolverLivro(Aluguel alugar) throws Exception{
+        
+        try {
+            em = PersistenceUtil.createEntityManager();
+            em.getTransaction().begin();
+            alugar = em.merge(alugar);
+            em.remove(alugar);
+            em.getTransaction().commit();
+            System.out.println("Aluguel removido dos registros");
+        } catch (Exception e) {
+            e.printStackTrace();
+            em.getTransaction().rollback();
+             throw new Exception("Falha ao realisar a função");
+        }
+    }
 }

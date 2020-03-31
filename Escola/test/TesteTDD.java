@@ -1,5 +1,6 @@
 
 import br.com.gemeos.escolacomtdd.dao.AluguelDao;
+import br.com.gemeos.escolacomtdd.facade.FacadeAluguel;
 import br.com.gemeos.escolacomtdd.facade.FacadeAluno;
 import br.com.gemeos.escolacomtdd.facade.FacadeLivro;
 import br.com.gemeos.escolacomtdd.facade.FacadeProfessor;
@@ -31,7 +32,7 @@ public class TesteTDD {
     private FacadeAluno fadao = new FacadeAluno();
     private FacadeProfessor fpdao = new FacadeProfessor();
     private FacadeLivro fldao = new FacadeLivro();
-    private AluguelDao alugarDao = new AluguelDao();
+    private FacadeAluguel facadeAlugar = new FacadeAluguel();
     private Conversor conversor = new Conversor();
     private CrudAluno cruda = new CrudAluno();
 
@@ -222,31 +223,59 @@ public class TesteTDD {
 //        livro = fldao.facadeBuscarLivro("Teste2");
 //        fldao.facadeRemoverLivro(livro);
 //    }
+//    @Test
+//    public void testAlugarLivro() throws Exception {
+//        String resposta;
+//        System.out.println("Aluno ou Professor?");
+//        resposta = "Professor";
+//        if (resposta == "Aluno") {
+//            System.out.println("Informe CPF");
+//            System.out.println(fadao.buscarAluno("123.456.789-10"));
+//            alugar.setNomeIndividuo("testeComMatricula");
+//            System.out.println("Titulo do Livro");
+//            alugar.setTituloLivro("Teste");
+//            livro = fldao.facadeBuscarLivro(alugar.getTituloLivro());
+//            livro.setCopias(livro.getCopias() - 1);
+//            fldao.facadeAtualizarLivro(livro);
+//            System.out.println("Data em que o aluguel foi efetuado");
+//            alugar.setDiaDoAluguel(conversor.stringParaData("28/04/2020"));
+//            facadeAlugar.facadeAlugarLivro(alugar);
+//
+//        } else {
+//            System.out.println("Informe CPF");
+//            System.out.println(fpdao.facadeBuscarProfessor("123.456.789-02"));
+//            alugar.setNomeIndividuo("teste");
+//            System.out.println("Titulo do Livro");
+//            alugar.setTituloLivro("Teste");
+//            livro = fldao.facadeBuscarLivro(alugar.getTituloLivro());
+//            livro.setCopias(livro.getCopias() - 1);
+//             fldao.facadeAtualizarLivro(livro);
+//            System.out.println("Data em que o aluguel foi efetuado");
+//            alugar.setDiaDoAluguel(conversor.stringParaData("01/01/2020"));
+//            facadeAlugar.facadeAlugarLivro(alugar);
+//        }
+//
+//    }
+//    @Test
+//    public void testAlugueisPendentes() throws Exception{
+//        for( Aluguel perc: facadeAlugar.facadeListarAluguel()){
+//            System.out.println(perc);
+//        }
+//        
+//    }
     @Test
-    public void testAlugarLivro() throws Exception {
-        String resposta;
-        System.out.println("Aluno ou Professor?");
-        resposta = "Professor";
-        if (resposta == "Aluno") {
-            System.out.println("Informe CPF");
-            System.out.println(fadao.buscarAluno("123.456.789-10"));
-            alugar.setNomeIndividuo("testeComMatricula");
-            System.out.println("Titulo do Livro");
-            alugar.setTituloLivro("Teste");
-            livro = fldao.facadeBuscarLivro(alugar.getTituloLivro());
-            livro.setCopias(livro.getCopias() - 1);
-            fldao.facadeAtualizarLivro(livro);
+    public void testPesquisarAluguel() throws Exception {
+        System.out.println("Informe o registro do Aluguel");
+        System.out.println(facadeAlugar.facadePesquisarAluguel(conversor.StringParaLong("17")));
+    }
 
-        } else {
-            System.out.println("Informe CPF");
-            System.out.println(fpdao.facadeBuscarProfessor("123.456.789-02"));
-            alugar.setNomeIndividuo("teste");
-            System.out.println("Titulo do Livro");
-            alugar.setTituloLivro("Teste");
-            livro = fldao.facadeBuscarLivro(alugar.getTituloLivro());
-            livro.setCopias(livro.getCopias() - 1);
-            System.out.println(conversor.stringParaData("27/03/2020"));
-        }
-
+    @Test
+    public void testDevolverLitro() throws Exception {
+        System.out.println("Informe o registro do aluguel");
+        System.out.println( alugar = facadeAlugar.facadePesquisarAluguel(conversor.StringParaLong("18")));
+        livro = fldao.facadeBuscarLivro(alugar.getTituloLivro());
+        livro.setCopias(livro.getCopias() + 1);
+        fldao.facadeAtualizarLivro(livro);
+        facadeAlugar.facadeDevolverLivro(alugar);
     }
 }
