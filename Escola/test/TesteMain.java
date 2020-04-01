@@ -2,6 +2,7 @@
 import br.com.gemeos.escolacomtdd.dao.LivroDao;
 import br.com.gemeos.escolacomtdd.dao.ProfessorDao;
 import br.com.gemeos.escolacomtdd.model.Professor;
+import br.com.gemeos.escolacomtdd.util.CrudAluguel;
 import br.com.gemeos.escolacomtdd.util.CrudLivro;
 
 /*
@@ -23,10 +24,12 @@ public class TesteMain {
         ProfessorDao pdao = new ProfessorDao();
         LivroDao ldao = new LivroDao();
         CrudLivro livro = new CrudLivro();
+        CrudAluguel aluguel = new CrudAluguel();
         //        for (Professor perc : pdao.listarProfessor()) {
         //            System.out.println(perc);;
 //               }
 //        System.out.println(ldao.buscarLivro("Teste"));
-        livro.livroEmExecução();
+//        livro.livroEmExecução();
+        aluguel.AluguelEmExecução();
     }
 }
