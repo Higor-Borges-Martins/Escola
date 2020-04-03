@@ -38,9 +38,9 @@ public class CrudAluguel {
     public void AluguelEmExecução() throws IOException, Exception {
 
         System.out.println("-----MENU DE ALUGUEL-----");
-        System.out.println("1 - Alugar Livro");
-        System.out.println("2 - Devolver Livros");
-        System.out.println("3 - Lista de alugueis");
+        System.out.println("1 - ALUGAR LIVRO");
+        System.out.println("2 - ALUGUES PENDENTES");
+        System.out.println("3 - DEVOLVER LIVRO");
         resposta = read.readLine();
 
         switch (resposta) {
@@ -87,9 +87,18 @@ public class CrudAluguel {
                 break;
 
             case "2":
+                for (Aluguel perc : facadeAlugar.facadeListarAluguel()) {
+                    System.out.println(perc);
+                }
                 break;
 
             case "3":
+                System.out.println("Informe o registro do aluguel");
+                System.out.println(alugar = facadeAlugar.facadePesquisarAluguel(conversor.StringParaLong(read.readLine())));
+                livro = fldao.facadeBuscarLivro(alugar.getTituloLivro());
+                livro.setCopias(livro.getCopias() + 1);
+                fldao.facadeAtualizarLivro(livro);
+                facadeAlugar.facadeDevolverLivro(alugar);
                 break;
 
             default:

@@ -1,28 +1,34 @@
-
-import br.com.gemeos.escolacomtdd.dao.LivroDao;
-import br.com.gemeos.escolacomtdd.dao.ProfessorDao;
-import br.com.gemeos.escolacomtdd.util.CrudAluguel;
-import br.com.gemeos.escolacomtdd.util.CrudAluno;
-import br.com.gemeos.escolacomtdd.util.CrudLivro;
-import br.com.gemeos.escolacomtdd.util.CrudProfessor;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package br.com.gemeos.escolacomtdd.main;
+
+import br.com.gemeos.escolacomtdd.dao.AlunoDao;
+import br.com.gemeos.escolacomtdd.facade.FacadeAluno;
+import br.com.gemeos.escolacomtdd.model.Aluno;
+import br.com.gemeos.escolacomtdd.model.Endereco;
+import br.com.gemeos.escolacomtdd.util.Conversor;
+import br.com.gemeos.escolacomtdd.util.CrudAluguel;
+import br.com.gemeos.escolacomtdd.util.CrudAluno;
+import br.com.gemeos.escolacomtdd.util.CrudLivro;
+import br.com.gemeos.escolacomtdd.util.CrudProfessor;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.text.ParseException;
+
 /**
  *
  * @author Pessoal
  */
-public class TesteMain {
+public class Main {
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws IOException, ParseException, Exception {
 
         BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
         CrudAluno aluno = new CrudAluno();
@@ -33,11 +39,11 @@ public class TesteMain {
 
         while (!resposta.equals("0")) {
             System.out.println("----- MENU -----");
-            System.out.println("1 - Aluno");
-            System.out.println("2 - Professor");
-            System.out.println("3 - Livro");
-            System.out.println("4 - Aluguel");
-            System.out.println("0 - Sair");
+            System.out.println("1 - ALUNO");
+            System.out.println("2 - PROFESSOR");
+            System.out.println("3 - LIVRO");
+            System.out.println("4 - ALUGUEL");
+            System.out.println("0 - SAIR");
             resposta = read.readLine();
 
             switch (resposta) {
@@ -56,10 +62,6 @@ public class TesteMain {
                 case "0":
                     System.out.println("Fechando o sistema");
                     break;
-                    
-                    default:
-                        System.out.println("Opção Invalida");
-                        break;
             }
         }
     }

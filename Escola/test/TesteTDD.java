@@ -225,9 +225,9 @@ public class TesteTDD {
 //    @Test
 //    public void testAlugarLivro() throws Exception {
 //        String resposta;
-//        System.out.println("Aluno ou Professor?");
+//         System.out.println("Aluno: 1 \n Professor: 2");
 //        resposta = "Aluno";
-//        if (resposta.equals("Aluno")) {
+//         if (resposta.equals("1")) {
 //            System.out.println("Informe CPF");
 //            aluno = fadao.buscarAluno("123.456.789-10");
 //            System.out.println(aluno);
@@ -270,7 +270,6 @@ public class TesteTDD {
 //        for( Aluguel perc: facadeAlugar.facadeListarAluguel()){
 //            System.out.println(perc);
 //        }
-//        
 //    }
 //    @Test
 //    public void testPesquisarAluguel() throws Exception {
@@ -278,13 +277,13 @@ public class TesteTDD {
 //        System.out.println(facadeAlugar.facadePesquisarAluguel(conversor.StringParaLong("17")));
 //    }
 
-//    @Test
-//    public void testDevolverLitro() throws Exception {
-//        System.out.println("Informe o registro do aluguel");
-//        System.out.println( alugar = facadeAlugar.facadePesquisarAluguel(conversor.StringParaLong("21")));
-//        livro = fldao.facadeBuscarLivro(alugar.getTituloLivro());
-//        livro.setCopias(livro.getCopias() + 1);
-//        fldao.facadeAtualizarLivro(livro);
-//        facadeAlugar.facadeDevolverLivro(alugar);
-//    }
+    @Test
+    public void testDevolverLitro() throws Exception {
+        System.out.println("Informe o registro do aluguel");
+        System.out.println( alugar = facadeAlugar.facadePesquisarAluguel(conversor.StringParaLong("21")));
+        livro = fldao.facadeBuscarLivro(alugar.getTituloLivro());
+        livro.setCopias(livro.getCopias() + 1);
+        fldao.facadeAtualizarLivro(livro);
+        facadeAlugar.facadeDevolverLivro(alugar);
+    }
 }

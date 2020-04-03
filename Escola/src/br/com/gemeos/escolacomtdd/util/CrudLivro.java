@@ -27,11 +27,11 @@ public class CrudLivro {
     public void livroEmExecução() throws IOException, ParseException, Exception {
 
         System.out.println("-----MENU DE LIVRO-----");
-        System.out.println("1 - Novo Livro");
-        System.out.println("2 - Listar Livros");
-        System.out.println("3 - Atualizar Quantidade de Livros");
-        System.out.println("4 - Remover Livro");
-        System.out.println("5 - Buscar Livro");
+        System.out.println("1 - NOVO LIVRO");
+        System.out.println("2 - LISTAR LIVROS");
+        System.out.println("3 - ATUALIZAR QUANTIDADE DE COPIAS DE UM LIVRO");
+        System.out.println("4 - REMOVER LIVRO");
+        System.out.println("5 - BUSCAR LIVRO");
         resposta = read.readLine();
 
         switch (resposta) {
