@@ -61,6 +61,7 @@ public class Main {
                     break;
                 case "0":
                     System.out.println("Fechando o sistema");
+                    System.exit(0);
                     break;
             }
         }
