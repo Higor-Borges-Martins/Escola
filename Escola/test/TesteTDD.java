@@ -280,7 +280,7 @@ public class TesteTDD {
     @Test
     public void testDevolverLitro() throws Exception {
         System.out.println("Informe o registro do aluguel");
-        System.out.println( alugar = facadeAlugar.facadePesquisarAluguel(conversor.StringParaLong("21")));
+        System.out.println( alugar = facadeAlugar.facadePesquisarAluguel(conversor.StringParaLong("28")));
         livro = fldao.facadeBuscarLivro(alugar.getTituloLivro());
         livro.setCopias(livro.getCopias() + 1);
         fldao.facadeAtualizarLivro(livro);

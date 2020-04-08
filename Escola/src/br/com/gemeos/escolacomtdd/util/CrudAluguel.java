@@ -45,7 +45,7 @@ public class CrudAluguel {
 
         switch (resposta) {
             case "1":
-                System.out.println("Aluno: 1 \n Professor: 2");
+                System.out.println(" Aluno: 1 \n Professor: 2");
                 resposta = read.readLine();
                 if (resposta.equals("1")) {
                     System.out.println("Informe CPF");
