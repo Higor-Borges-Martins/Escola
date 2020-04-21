@@ -5,12 +5,17 @@
  */
 package br.com.gemeos.escolacomtdd.model;
 
+import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Temporal;
+import javax.persistence.OneToOne;
 import javax.persistence.TemporalType;
 
 /**
@@ -18,13 +23,15 @@ import javax.persistence.TemporalType;
  * @author Pessoal
  */
 @Entity
-public class Aluguel {
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Aluguel implements Serializable{
+
     @Id
     @GeneratedValue
     private long registro;
-    @Column(length = 50,nullable = true)
-    private String tituloLivro;
-    @Column(length = 40, nullable = true)
+    @OneToOne(cascade = CascadeType.ALL)
+    private Livro livro;
+    @Column(length = 50, nullable = true)
     private String nomeIndividuo;
     @Temporal(TemporalType.DATE)
     private Date diaDoAluguel;
@@ -37,12 +44,12 @@ public class Aluguel {
         this.registro = registro;
     }
 
-    public String getTituloLivro() {
-        return tituloLivro;
+    public Livro getLivro() {
+        return livro;
     }
 
-    public void setTituloLivro(String tituloLivro) {
-        this.tituloLivro = tituloLivro;
+    public void setLivro(Livro livro) {
+        this.livro = livro;
     }
 
     public String getNomeIndividuo() {
@@ -63,8 +70,7 @@ public class Aluguel {
 
     @Override
     public String toString() {
-        return "Aluguel{" + "registro=" + registro + ", tituloLivro=" + tituloLivro + ", nomeIndividuo=" + nomeIndividuo + ", diaDoAluguel=" + diaDoAluguel + '}';
+        return "Aluguel{" + "registro=" + registro + ", livro=" + livro + ", nomeIndividuo=" + nomeIndividuo + ", diaDoAluguel=" + diaDoAluguel + '}';
     }
-    
-    
+
 }

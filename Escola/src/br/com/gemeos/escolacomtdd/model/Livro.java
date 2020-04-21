@@ -22,19 +22,19 @@ public class Livro {
 
     @Id
     @GeneratedValue
-    long idLivro;
+    private long idLivro;
     @Column(length = 100, nullable = true)
-    String titulo;
+    private String titulo;
     @Column(length = 100, nullable = true)
-    String autor;
+    private String autor;
     @Temporal(TemporalType.DATE)
-    Date anoDePublicacao;
+    private Date anoDePublicacao;
     @Column(length = 100, nullable = true)
-    String editora;
-    @Column( length = 3, nullable = false)
-    String numeroDeEdicao;
+    private String editora;
+    @Column(length = 3, nullable = false)
+    private String numeroDeEdicao;
     @Column(length = 3, nullable = true)
-    double Copias;
+    private double Copias;
 
     public long getIdLivro() {
         return idLivro;
@@ -92,11 +92,9 @@ public class Livro {
         this.Copias = Copias;
     }
 
-   
-
     @Override
     public String toString() {
-        return "Livro{" + "idLivro=" + idLivro + ", titulo=" + titulo + ", autor=" + autor + ", anoDePublicacao=" + anoDePublicacao + ", editora=" + editora + ", numeroDeEdicao=" + numeroDeEdicao + ", numeroDeCopias=" + Copias + '}';
+        return "Livro{" + "idLivro=" + idLivro + ", titulo=" + titulo + ", autor=" + autor + ", anoDePublicacao=" + anoDePublicacao + ", editora=" + editora + ", numeroDeEdicao=" + numeroDeEdicao + ", numero De Copias Disponiveis para Aluguel=" + Copias + '}';
     }
 
 }
