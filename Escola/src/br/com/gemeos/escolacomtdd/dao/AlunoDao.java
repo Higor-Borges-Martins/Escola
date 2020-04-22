@@ -37,8 +37,8 @@ public class AlunoDao {
             em.getTransaction().begin();
             em.persist(a);
             em.getTransaction().commit();
-            
             System.out.println("Cadastrado com sucesso");
+            
         } catch (Exception e) {
             e.printStackTrace();
             em.getTransaction().rollback();

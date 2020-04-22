@@ -23,18 +23,19 @@ import javax.persistence.TemporalType;
  * @author Pessoal
  */
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-public class Aluguel implements Serializable{
+public class Aluguel {
 
     @Id
     @GeneratedValue
     private long registro;
-    @OneToOne(cascade = CascadeType.ALL)
-    private Livro livro;
     @Column(length = 50, nullable = true)
+    private String tituloLivro;
+    @Column(length = 40, nullable = true)
     private String nomeIndividuo;
     @Temporal(TemporalType.DATE)
     private Date diaDoAluguel;
+    @Column(length = 10, nullable = true)
+    private boolean status;
 
     public long getRegistro() {
         return registro;
@@ -44,12 +45,12 @@ public class Aluguel implements Serializable{
         this.registro = registro;
     }
 
-    public Livro getLivro() {
-        return livro;
+    public String getTituloLivro() {
+        return tituloLivro;
     }
 
-    public void setLivro(Livro livro) {
-        this.livro = livro;
+    public void setTituloLivro(String tituloLivro) {
+        this.tituloLivro = tituloLivro;
     }
 
     public String getNomeIndividuo() {
@@ -68,9 +69,22 @@ public class Aluguel implements Serializable{
         this.diaDoAluguel = diaDoAluguel;
     }
 
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
-        return "Aluguel{" + "registro=" + registro + ", livro=" + livro + ", nomeIndividuo=" + nomeIndividuo + ", diaDoAluguel=" + diaDoAluguel + '}';
+        if (status == true) {
+
+            return "Status: Pendente," + " Aluguel{" + "registro=" + registro + ", tituloLivro=" + tituloLivro + ", nomeIndividuo=" + nomeIndividuo + ", diaDoAluguel=" + diaDoAluguel + '}';
+        } else {
+            return "Status: Devolvido," +" Aluguel{" + "registro=" + registro + ", tituloLivro=" + tituloLivro + ", nomeIndividuo=" + nomeIndividuo + ", diaDoAluguel=" + diaDoAluguel + '}';
+        }
     }
 
 }

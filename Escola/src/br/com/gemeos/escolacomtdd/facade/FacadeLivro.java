@@ -5,7 +5,11 @@
  */
 package br.com.gemeos.escolacomtdd.facade;
 
+import br.com.gemeos.escolacomtdd.dao.AutorDao;
+import br.com.gemeos.escolacomtdd.dao.EditoraDao;
 import br.com.gemeos.escolacomtdd.dao.LivroDao;
+import br.com.gemeos.escolacomtdd.model.Autor;
+import br.com.gemeos.escolacomtdd.model.Editora;
 import br.com.gemeos.escolacomtdd.model.Livro;
 import java.util.List;
 
@@ -14,30 +18,49 @@ import java.util.List;
  * @author Pessoal
  */
 public class FacadeLivro {
-    
+
     LivroDao ldao = new LivroDao();
-    
-    public void facadeCadastrarLivro(Livro l){
-        
+    AutorDao daoAutor = new AutorDao();
+    EditoraDao daoEdit = new EditoraDao();
+
+    public void facadeCadastrarLivro(Livro l) {
+
         ldao.salvarLivro(l);
     }
-    public List<Livro> facadeListaLivro() throws Exception{
-        
-       return ldao.listarLivro();
+
+    public List<Livro> facadeListaLivro() throws Exception {
+
+        return ldao.listarLivro();
     }
-    public Livro facadeBuscarLivro(String titulo) throws Exception{
-        
+
+    public Livro facadeBuscarLivro(String titulo) throws Exception {
+
         return ldao.buscarLivro(titulo);
     }
-    public void facadeAtualizarLivro(Livro l) throws Exception{
-        
+
+    public void facadeAtualizarLivro(Livro l) throws Exception {
+
         ldao.atualisarQuantidadeLivro(l);
     }
-    public void facadeRemoverLivro(Livro l) throws Exception{
-        
+
+    public void facadeRemoverLivro(Livro l) throws Exception {
+
         ldao.removerLivro(l);
     }
-    
-    
-    
+
+    public void facadeCadastrarAutor(Autor autor) {
+        daoAutor.cadastrarAutor(autor);
+    }
+
+    public Autor facadeBuscarAutor(String nomeAutor) throws Exception {
+        return daoAutor.buscarAutor(nomeAutor);
+    }
+
+    public void facadeCadastrarEditora(Editora editora) {
+        daoEdit.cadastrarEditora(editora);
+    }
+
+    public Editora facadeBuscarEditora(String nomeEditora) throws Exception {
+        return daoEdit.buscarEditora(nomeEditora);
+    }
 }

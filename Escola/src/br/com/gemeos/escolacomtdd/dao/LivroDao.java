@@ -82,7 +82,7 @@ public class LivroDao {
             em.getTransaction().begin();
             em.merge(l);
             em.getTransaction().commit();
-            System.err.println("Editado com suceso");
+            System.out.println("-");
         } catch (Exception e) {
             e.printStackTrace();
             em.getTransaction().rollback();

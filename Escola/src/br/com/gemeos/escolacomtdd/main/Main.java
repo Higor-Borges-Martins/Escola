@@ -14,6 +14,7 @@ import br.com.gemeos.escolacomtdd.util.CrudAluguel;
 import br.com.gemeos.escolacomtdd.util.CrudAluno;
 import br.com.gemeos.escolacomtdd.util.CrudLivro;
 import br.com.gemeos.escolacomtdd.util.CrudProfessor;
+import br.com.gemeos.escolacomtdd.util.MetodosDeAutorEditora;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -36,34 +37,37 @@ public class Main {
         CrudLivro livro = new CrudLivro();
         CrudAluguel aluguel = new CrudAluguel();
         String resposta = new String();
+        MetodosDeAutorEditora metodos = new MetodosDeAutorEditora();
 
-        while (!resposta.equals("0")) {
-            System.out.println("----- MENU -----");
-            System.out.println("1 - ALUNO");
-            System.out.println("2 - PROFESSOR");
-            System.out.println("3 - LIVRO");
-            System.out.println("4 - ALUGUEL");
-            System.out.println("0 - SAIR");
-            resposta = read.readLine();
-
-            switch (resposta) {
-                case "1":
-                    aluno.alunoEmExecucao();
-                    break;
-                case "2":
-                    prof.professorEmExecucao();
-                    break;
-                case "3":
-                    livro.livroEmExecução();
-                    break;
-                case "4":
-                    aluguel.AluguelEmExecução();
-                    break;
-                case "0":
-                    System.out.println("Fechando o sistema");
-                    System.exit(0);
-                    break;
-            }
-        }
+//        while (!resposta.equals("0")) {
+//            System.out.println("----- MENU -----");
+//            System.out.println("1 - ALUNO");
+//            System.out.println("2 - PROFESSOR");
+//            System.out.println("3 - LIVRO");
+//            System.out.println("4 - ALUGUEL");
+//            System.out.println("0 - SAIR");
+//            resposta = read.readLine();
+//
+//            switch (resposta) {
+//                case "1":
+//                    aluno.alunoEmExecucao();
+//                    break;
+//                case "2":
+//                    prof.professorEmExecucao();
+//                    break;
+//                case "3":
+//                    livro.livroEmExecução();
+//                    break;
+//                case "4":
+//                    aluguel.AluguelEmExecução();
+//                    break;
+//                case "0":
+//                    System.out.println("Fechando o sistema");
+//                    System.exit(0);
+//                    break;
+//            }
+//        }
+        metodos.testBuscarEditora();
+        
     }
 }
