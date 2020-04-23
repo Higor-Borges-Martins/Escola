@@ -14,6 +14,7 @@ import br.com.gemeos.escolacomtdd.model.Livro;
 import br.com.gemeos.escolacomtdd.model.Professor;
 import br.com.gemeos.escolacomtdd.util.Conversor;
 import br.com.gemeos.escolacomtdd.util.CrudAluno;
+import br.com.gemeos.escolacomtdd.util.MetodosDeAutorEditora;
 import java.text.ParseException;
 import org.junit.Test;
 
@@ -41,6 +42,7 @@ public class TesteTDD {
     private FacadeAluguel facadeAlugar = new FacadeAluguel();
     private Conversor conversor = new Conversor();
     private CrudAluno cruda = new CrudAluno();
+    private MetodosDeAutorEditora metodos = new MetodosDeAutorEditora();
 
     public TesteTDD() {
     }
@@ -190,28 +192,34 @@ public class TesteTDD {
 //        prof = fpdao.facadeBuscarProfessor("123.456.789-01");
 //        fpdao.facadeRemoverProfessor(prof);
 //    }
+    @Test
+    public void testCadastrarLivro() throws ParseException, Exception {
+
+        System.out.println("Titulo do Livro");
+        livro.setTitulo("Teste4");
+        System.out.println("Nome do Autor");
+        autor = fldao.facadeBuscarAutor("top");
+        if (autor != null) {
+            livro.setAutor(autor);
+            System.out.println("Ano de Publicação");
+            livro.setAnoDePublicacao(conversor.stringParaData("11/11/1111"));
+            System.out.println("Editora");
+            livro.setEditora("Top crow");
+            System.out.println("Edição");
+            livro.setNumeroDeEdicao("6 °");
+            System.out.println("Informe o número de copias");
+            livro.setCopias(1);
+            fldao.facadeCadastrarLivro(livro);
+        } else {
+            metodos.CadastrarAutor();
+        }
+    }
+
 //    @Test
-//    public void testCadastrarLivro() throws ParseException{
-//        
-//        System.out.println("Titulo do Livro");
-//        livro.setTitulo("Teste2");
-//        System.out.println("Nome do Autor");
-//        livro.setAutor("Testador");
-//        System.out.println("Ano de Publicação");
-//        livro.setAnoDePublicacao(conversor.stringParaData("11/11/1111"));
-//        System.out.println("Editora");
-//        livro.setEditora("Top crow");
-//        System.out.println("Edição");
-//        livro.setNumeroDeEdicao("6 °");
-//        System.out.println("Informe o número de copias");
-//        livro.setCopias(1);
-//        fldao.facadeCadastrarLivro(livro);
-//    }
-//    
-//    @Test
-//    public void testListarLivros() throws Exception{
-//        for(Livro perc: fldao.facadeListaLivro())
+//    public void testListarLivros() throws Exception {
+//        for (Livro perc : fldao.facadeListaLivro()) {
 //            System.out.println(perc);
+//        }
 //    }
 //    @Test
 //    public void testAtualisarQuantidadeLivro() throws Exception{
@@ -220,7 +228,7 @@ public class TesteTDD {
 //        fldao.facadeAtualizarLivro(livro);
 //    }
 //    @Test
-//    public void testBuscarLivro() throws Exception{
+//    public void testBuscarLivro() throws Exception {
 //        System.out.println(fldao.facadeBuscarLivro("Teste"));
 //    }
 //    @Test
@@ -295,7 +303,6 @@ public class TesteTDD {
 //        facadeAlugar.facadeDevolverLivro(alugar);
 //    }
 //    
-   
 //    @Test
 //    public void testCadastrarAutor() throws ParseException{
 //        System.out.println("Nome do Autor");
@@ -313,7 +320,7 @@ public class TesteTDD {
 //    @Test
 //    public void testBucarAutor() throws Exception{
 //        System.out.println("Nome do Autor");
-//        System.out.println(fldao.facadeBuscarAutor("Alexandre Dumas Pai"));
+//        System.out.println(fldao.facadeBuscarAutor("top"));
 //    } 
 //    @Test
 //    public void testCadastrarEditora() {
@@ -341,8 +348,8 @@ public class TesteTDD {
 //        editora.setEndereco(endereco);
 //        fldao.facadeCadastrarEditora(editora);
 //    }
-    @Test
-    public void testBuscarEditora() throws Exception{
-        System.out.println(fldao.facadeBuscarEditora("Teste2"));  
-    }
+//    @Test
+//    public void testBuscarEditora() throws Exception{
+//        System.out.println(fldao.facadeBuscarEditora("Teste2"));  
+//    }
 }

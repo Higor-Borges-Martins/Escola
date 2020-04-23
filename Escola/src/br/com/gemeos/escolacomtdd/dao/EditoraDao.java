@@ -8,6 +8,7 @@ package br.com.gemeos.escolacomtdd.dao;
 import br.com.gemeos.escolacomtdd.conection.PersistenceUtil;
 import br.com.gemeos.escolacomtdd.model.Editora;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 /**
@@ -42,9 +43,10 @@ public class EditoraDao {
         query.setParameter("nomeEditora", nomeEditora +"%");
         return (Editora) query.getSingleResult();
             
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new Exception("Não encontrado");
+        } catch (NoResultException nre) {
+            return null;
+//            e.printStackTrace();
+//            throw new Exception("Não encontrado");
         }finally{
             PersistenceUtil.closeEntityManagerFactory();
         }

@@ -6,12 +6,16 @@
 package br.com.gemeos.escolacomtdd.model;
 
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 
 /**
  *
@@ -25,8 +29,8 @@ public class Livro {
     private long idLivro;
     @Column(length = 100, nullable = true)
     private String titulo;
-    @Column(length = 100, nullable = true)
-    private String autor;
+    @ManyToOne
+    private Autor autor;
     @Temporal(TemporalType.DATE)
     private Date anoDePublicacao;
     @Column(length = 100, nullable = true)
@@ -52,13 +56,15 @@ public class Livro {
         this.titulo = titulo;
     }
 
-    public String getAutor() {
+    public Autor getAutor() {
         return autor;
     }
 
-    public void setAutor(String autor) {
+    public void setAutor(Autor autor) {
         this.autor = autor;
     }
+
+   
 
     public Date getAnoDePublicacao() {
         return anoDePublicacao;
@@ -94,7 +100,7 @@ public class Livro {
 
     @Override
     public String toString() {
-        return "Livro{" + "idLivro=" + idLivro + ", titulo=" + titulo + ", autor=" + autor + ", anoDePublicacao=" + anoDePublicacao + ", editora=" + editora + ", numeroDeEdicao=" + numeroDeEdicao + ", numero De Copias Disponiveis para Aluguel=" + Copias + '}';
+        return "Livro{ " + "idLivro= " + idLivro + ", titulo= " + titulo + ", autor= " + autor + ", anoDePublicacao= " + anoDePublicacao + ", editora= " + editora + ", numeroDeEdicao= " + numeroDeEdicao + ", numero De Copias Disponiveis para Aluguel= " + Copias + '}';
     }
 
 }

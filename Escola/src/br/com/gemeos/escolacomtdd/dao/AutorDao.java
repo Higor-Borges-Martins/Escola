@@ -8,6 +8,7 @@ package br.com.gemeos.escolacomtdd.dao;
 import br.com.gemeos.escolacomtdd.conection.PersistenceUtil;
 import br.com.gemeos.escolacomtdd.model.Autor;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 /**
@@ -44,9 +45,10 @@ public class AutorDao {
             query.setParameter("nomeAutor", nomeAutor + "%");
             return (Autor) query.getSingleResult();
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new Exception("Autor não Encontrado");
+        } catch (NoResultException nre) {
+//            e.printStackTrace();
+//            throw new Exception("Autor não Encontrado");
+            return null;
         } finally {
             PersistenceUtil.closeEntityManagerFactory();
         }
