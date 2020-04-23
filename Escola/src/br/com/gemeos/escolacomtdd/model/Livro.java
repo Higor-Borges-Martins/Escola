@@ -33,8 +33,8 @@ public class Livro {
     private Autor autor;
     @Temporal(TemporalType.DATE)
     private Date anoDePublicacao;
-    @Column(length = 100, nullable = true)
-    private String editora;
+    @ManyToOne
+    private Editora editora;
     @Column(length = 3, nullable = false)
     private String numeroDeEdicao;
     @Column(length = 3, nullable = true)
@@ -74,11 +74,11 @@ public class Livro {
         this.anoDePublicacao = anoDePublicacao;
     }
 
-    public String getEditora() {
+    public Editora getEditora() {
         return editora;
     }
 
-    public void setEditora(String editora) {
+    public void setEditora(Editora editora) {
         this.editora = editora;
     }
 

@@ -198,13 +198,14 @@ public class TesteTDD {
         System.out.println("Titulo do Livro");
         livro.setTitulo("Teste4");
         System.out.println("Nome do Autor");
-        autor = fldao.facadeBuscarAutor("top");
+        autor = fldao.facadeBuscarAutor("Alexandre Dumas");
         if (autor != null) {
             livro.setAutor(autor);
             System.out.println("Ano de Publicação");
             livro.setAnoDePublicacao(conversor.stringParaData("11/11/1111"));
             System.out.println("Editora");
-            livro.setEditora("Top crow");
+            editora = fldao.facadeBuscarEditora("Teste2");
+            livro.setEditora(editora);
             System.out.println("Edição");
             livro.setNumeroDeEdicao("6 °");
             System.out.println("Informe o número de copias");
@@ -350,6 +351,6 @@ public class TesteTDD {
 //    }
 //    @Test
 //    public void testBuscarEditora() throws Exception{
-//        System.out.println(fldao.facadeBuscarEditora("Teste2"));  
+//        System.out.println(fldao.facadeBuscarEditora("top"));  
 //    }
 }

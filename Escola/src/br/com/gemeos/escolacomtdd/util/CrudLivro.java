@@ -7,6 +7,7 @@ package br.com.gemeos.escolacomtdd.util;
 
 import br.com.gemeos.escolacomtdd.facade.FacadeLivro;
 import br.com.gemeos.escolacomtdd.model.Autor;
+import br.com.gemeos.escolacomtdd.model.Editora;
 import br.com.gemeos.escolacomtdd.model.Livro;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,6 +24,7 @@ public class CrudLivro {
     private String resposta = new String();
     private Livro livro = new Livro();
     private Autor autor = new Autor();
+    private Editora editora = new Editora();
     private FacadeLivro fldao = new FacadeLivro();
     private Conversor conversor = new Conversor();
     private MetodosDeAutorEditora metodos = new MetodosDeAutorEditora();
@@ -48,7 +50,9 @@ public class CrudLivro {
                     System.out.println("Ano de Publicação");
                     livro.setAnoDePublicacao(conversor.stringParaData(read.readLine()));
                     System.out.println("Editora");
-                    livro.setEditora(read.readLine());
+                    //COLOQUE O IF AQUI
+                    editora = fldao.facadeBuscarEditora(read.readLine());
+                    livro.setEditora(editora);
                     System.out.println("Edição");
                     livro.setNumeroDeEdicao(read.readLine());
                     System.out.println("Informe o número de copias");
