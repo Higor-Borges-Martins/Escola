@@ -6,6 +6,7 @@ import br.com.gemeos.escolacomtdd.util.Conversor;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 /*
@@ -71,9 +72,8 @@ public class AlunoDao {
             query = em.createQuery("SELECT a FROM Pessoa a WHERE a.cpf LIKE :cpf");
             query.setParameter("cpf", cpf + "%");
             return (Aluno) query.getSingleResult();
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new Exception("Aluno não encontrado");
+        } catch (NoResultException nre) {
+            return null;
         } finally {
             PersistenceUtil.closeEntityManagerFactory();
         }

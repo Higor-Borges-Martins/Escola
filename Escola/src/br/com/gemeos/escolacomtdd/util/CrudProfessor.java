@@ -201,7 +201,13 @@ public class CrudProfessor {
             case "5":
                 try {
                     System.out.println("cpf do Professor");
-                    System.out.println(fpdao.facadeBuscarProfessor(read.readLine()));
+                    prof = fpdao.facadeBuscarProfessor(read.readLine());
+                    
+                    if(prof != null){
+                    System.out.println(prof);
+                    }else{
+                        System.out.println("Não foi encontrado");
+                    }
                 } catch (Exception e) {
                     System.err.println("Falha ao realizar a operação");
                 }

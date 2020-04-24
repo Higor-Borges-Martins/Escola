@@ -190,7 +190,12 @@ public class CrudAluno {
             case "5":
                 try {
                     System.out.println("cpf do Aluno");
-                    System.out.println(fadao.buscarAluno(read.readLine()));
+                    aluno = fadao.buscarAluno(read.readLine());
+                    if(aluno != null){
+                    System.out.println(aluno);
+                    }else{
+                        System.out.println("Não foi encontrado");
+                    }
                 } catch (Exception e) {
                     System.out.println("Falha ao realizar a operação");
                 }

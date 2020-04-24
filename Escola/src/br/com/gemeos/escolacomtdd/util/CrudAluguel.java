@@ -102,7 +102,7 @@ public class CrudAluguel {
                     facadeAlugar.facadeDevolverLivro(alugar);
                 } catch (Exception e) {
                     System.out.println("Falha ao realizar a operação");
-                }
+                } 
                     break;
 
             default:

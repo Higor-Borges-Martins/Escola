@@ -92,11 +92,16 @@ public class TesteTDD {
 //
 //        }
 //    }
-//    @Test
-//    public void testBuscarAluno() throws Exception {
-//        System.out.println("cpf do aluno");
-//        System.out.println(fadao.buscarAluno("123.456.789-10"));
-//    }
+    @Test
+    public void testBuscarAluno() throws Exception {
+        System.out.println("cpf do aluno");
+        aluno = fadao.buscarAluno("123.456.789-101");
+        if (aluno != null) {
+            System.out.println(aluno);
+        } else {
+            System.out.println("Não foi encontrado");
+        }
+    }
 //    public void testEditarAluno() throws ParseException, Exception {
 //
 //        Aluno aluno;
@@ -174,8 +179,14 @@ public class TesteTDD {
 //        }
 //    }
 //    @Test
-//    public void testBuscarProfessor() throws Exception{
-//        System.out.println(fpdao.facadeBuscarProfessor("123.456.789-10"));
+//    public void testBuscarProfessor() throws Exception {
+//
+//        prof = fpdao.facadeBuscarProfessor("123.456.789-101");
+//        if (prof != null) {
+//            System.out.println(prof);
+//        } else {
+//            System.out.println("Não foi encontrado");
+//        }
 //    }
 //    
 //    @Test
@@ -229,10 +240,15 @@ public class TesteTDD {
 //            System.out.println("Livro não encontrado");
 //        }
 //    }
-    @Test
-    public void testBuscarLivro() throws Exception {
-        System.out.println(fldao.facadeBuscarLivro("Teste"));
-    }
+//    @Test
+//    public void testBuscarLivro() throws Exception {
+//        livro = fldao.facadeBuscarLivro("este");
+//        if(livro != null){
+//            System.out.println(livro);
+//        }else{
+//            System.out.println("Não foi encontrado");
+//        }
+//    }
 //    @Test
 //    public void testRemoverLivro() throws Exception{
 //        
