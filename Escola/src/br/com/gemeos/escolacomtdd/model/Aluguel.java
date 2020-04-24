@@ -5,17 +5,13 @@
  */
 package br.com.gemeos.escolacomtdd.model;
 
-import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.Temporal;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
@@ -28,8 +24,8 @@ public class Aluguel {
     @Id
     @GeneratedValue
     private long registro;
-    @Column(length = 50, nullable = true)
-    private String tituloLivro;
+    @OneToOne
+    private Livro Livro;
     @Column(length = 40, nullable = true)
     private String nomeIndividuo;
     @Temporal(TemporalType.DATE)
@@ -45,12 +41,12 @@ public class Aluguel {
         this.registro = registro;
     }
 
-    public String getTituloLivro() {
-        return tituloLivro;
+    public Livro getLivro() {
+        return Livro;
     }
 
-    public void setTituloLivro(String tituloLivro) {
-        this.tituloLivro = tituloLivro;
+    public void setLivro(Livro Livro) {
+        this.Livro = Livro;
     }
 
     public String getNomeIndividuo() {
@@ -81,9 +77,9 @@ public class Aluguel {
     public String toString() {
         if (status == true) {
 
-            return "Status: Pendente," + " Aluguel{" + "registro=" + registro + ", tituloLivro=" + tituloLivro + ", nomeIndividuo=" + nomeIndividuo + ", diaDoAluguel=" + diaDoAluguel + '}';
+            return "Status: Pendente," + " Aluguel{" + "registro=" + registro + ", tituloLivro=" + Livro + ", nomeIndividuo=" + nomeIndividuo + ", diaDoAluguel=" + diaDoAluguel + '}';
         } else {
-            return "Status: Devolvido," +" Aluguel{" + "registro=" + registro + ", tituloLivro=" + tituloLivro + ", nomeIndividuo=" + nomeIndividuo + ", diaDoAluguel=" + diaDoAluguel + '}';
+            return "Status: Devolvido," +" Aluguel{" + "registro=" + registro + ", tituloLivro=" + Livro + ", nomeIndividuo=" + nomeIndividuo + ", diaDoAluguel=" + diaDoAluguel + '}';
         }
     }
 

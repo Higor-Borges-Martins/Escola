@@ -45,63 +45,65 @@ public class CrudAluguel {
 
         switch (resposta) {
             case "1":
-                System.out.println("Aluno: 1 \n Professor: 2");
-                resposta = read.readLine();
-                if (resposta.equals("1")) {
-                    System.out.println("Informe CPF");
-                    aluno = fadao.buscarAluno(read.readLine());
-                    System.out.println(aluno);
-                    alugar.setNomeIndividuo(aluno.getNome());
+                try {
+                    System.out.println("Aluno: 1 \n Professor: 2");
+                    resposta = read.readLine();
+                    if (resposta.equals("1")) {
+                        System.out.println("Informe CPF");
+                        System.out.println(aluno = fadao.buscarAluno(read.readLine()));
+                        alugar.setNomeIndividuo(aluno.getNome());
+                    } else {
+                        System.out.println("Informe CPF");
+                        System.out.println(prof = fpdao.facadeBuscarProfessor(read.readLine()));
+                        alugar.setNomeIndividuo(prof.getNome());
+                        System.out.println(prof.getNome());
+                    }
                     System.out.println("Titulo do Livro");
-                    alugar.setTituloLivro(read.readLine());
-                    livro = fldao.facadeBuscarLivro(alugar.getTituloLivro());
+                    System.out.println(livro = fldao.facadeBuscarLivro(read.readLine()));
+                    if (livro != null) {
+                        alugar.setLivro(livro);
+                    } else {
+                        System.out.println("Livro não encontrado no sistema");
+                        break;
+                    }
                     if (livro.getCopias() != 0) {
                         livro.setCopias(livro.getCopias() - 1);
                         fldao.facadeAtualizarLivro(livro);
                         System.out.println("Data em que o aluguel foi efetuado");
                         alugar.setDiaDoAluguel(conversor.stringParaData(read.readLine()));
-                         alugar.setStatus(true);
+                        alugar.setStatus(true);
                         facadeAlugar.facadeAlugarLivro(alugar);
                     } else {
                         System.out.println("Livro Indisponivel no momento");
                     }
 
-                } else {
-                    System.out.println("Informe CPF");
-                    prof = fpdao.facadeBuscarProfessor(read.readLine());
-                    System.out.println(prof);
-                    alugar.setNomeIndividuo(prof.getNome());
-                    System.out.println("Titulo do Livro");
-                    alugar.setTituloLivro(read.readLine());
-                    livro = fldao.facadeBuscarLivro(alugar.getTituloLivro());
-                    if (livro.getCopias() != 0) {
-                        livro.setCopias(livro.getCopias() - 1);
-                        fldao.facadeAtualizarLivro(livro);
-                        System.out.println("Data em que o aluguel foi efetuado");
-                        alugar.setDiaDoAluguel(conversor.stringParaData(read.readLine()));
-                         alugar.setStatus(true);
-                        facadeAlugar.facadeAlugarLivro(alugar);
-                    } else {
-                        System.out.println("Livro Indisponivel no momento");
-                    }
+                } catch (Exception e) {
+                    System.err.println("Falha ao realizar a operação");
                 }
-
                 break;
-
             case "2":
-                for (Aluguel perc : facadeAlugar.facadeListarAluguel()) {
-                    System.out.println(perc);
+                try {
+                    for (Aluguel perc : facadeAlugar.facadeListarAluguel()) {
+                        System.out.println(perc);
+                    }
+                } catch (Exception e) {
+                    System.err.println("Falha ao realizar a operação");
                 }
                 break;
 
             case "3":
-                System.out.println("Informe o registro do aluguel");
-                System.out.println(alugar = facadeAlugar.facadePesquisarAluguel(conversor.StringParaLong(read.readLine())));
-                livro = fldao.facadeBuscarLivro(alugar.getTituloLivro());
-                livro.setCopias(livro.getCopias() + 1);
-                fldao.facadeAtualizarLivro(livro);
-                facadeAlugar.facadeDevolverLivro(alugar);
-                break;
+                try {
+                    System.out.println("Informe o registro do aluguel");
+                    System.out.println(alugar = facadeAlugar.facadePesquisarAluguel(conversor.StringParaLong(read.readLine())));
+                    alugar.setStatus(false);
+                    livro = alugar.getLivro();
+                    livro.setCopias(livro.getCopias() + 1);
+                    fldao.facadeAtualizarLivro(livro);
+                    facadeAlugar.facadeDevolverLivro(alugar);
+                } catch (Exception e) {
+                    System.out.println("Falha ao realizar a operação");
+                }
+                    break;
 
             default:
                 System.out.println("Opção invalida");

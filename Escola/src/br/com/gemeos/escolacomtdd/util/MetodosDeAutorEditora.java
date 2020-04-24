@@ -20,7 +20,7 @@ import java.text.ParseException;
  */
 public class MetodosDeAutorEditora {
 
-    BufferedReader read = new BufferedReader( new InputStreamReader(System.in));
+    BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
     private Autor autor = new Autor();
     private Editora editora = new Editora();
     private Conversor conversor = new Conversor();
@@ -28,52 +28,63 @@ public class MetodosDeAutorEditora {
     private Endereco endereco = new Endereco();
 
     public void CadastrarAutor() throws ParseException, IOException {
-        System.out.println("Nome do Autor");
-        autor.setNomeAutor(read.readLine());
-        System.out.println("Data de Nascimento");
-        autor.setDtNascimento(conversor.stringParaData(read.readLine()));
-        System.out.println("Data de Falecimento");
-        autor.setDtMorte(conversor.stringParaData(read.readLine()));
-        System.out.println("Nacionalidade");
-        autor.setNacionalidade(read.readLine());
-        System.out.println("Generos Literarios");
-        autor.setGeneroLiterari(read.readLine());
-        fldao.facadeCadastrarAutor(autor);
+        try {
+            System.out.println("Nome do Autor");
+            autor.setNomeAutor(read.readLine());
+            System.out.println("Data de Nascimento");
+            autor.setDtNascimento(conversor.stringParaData(read.readLine()));
+            System.out.println("Data de Falecimento");
+            autor.setDtMorte(conversor.stringParaData(read.readLine()));
+            System.out.println("Nacionalidade");
+            autor.setNacionalidade(read.readLine());
+            System.out.println("Generos Literarios");
+            autor.setGeneroLiterari(read.readLine());
+            fldao.facadeCadastrarAutor(autor);
+        } catch (Exception e) {
+            System.err.println("Falha ao realizar a operação");
+        }
+
     }
-    
-     public void BucarAutor() throws Exception{
-        System.out.println("Nome do Autor");
-        System.out.println(fldao.facadeBuscarAutor(read.readLine()));
+
+    public void BucarAutor() throws Exception {
+        try {
+            System.out.println("Nome do Autor");
+            System.out.println(fldao.facadeBuscarAutor(read.readLine()));
+        } catch (Exception e) {
+            System.err.println("Falha ao realizar a operação");
+        }
     }
-     
-      public void CadastrarEditora() throws IOException {
-        System.out.println("Nome da Editora");
-        editora.setNomeEditora(read.readLine());
 
-        System.out.println("Rua ");
-        endereco.setRua(read.readLine());
+    public void CadastrarEditora() throws IOException {
+        try {
+            System.out.println("Nome da Editora");
+            editora.setNomeEditora(read.readLine());
+            System.out.println("Rua ");
+            endereco.setRua(read.readLine());
+            System.out.println("Bairro");
+            endereco.setBairro(read.readLine());
+            System.out.println("Numero");
+            endereco.setNumero(read.readLine());
+            System.out.println("Cidade");
+            endereco.setCidade(read.readLine());
+            System.out.println("UF");
+            endereco.setUf(read.readLine());
+            System.out.println("Cep");
+            endereco.setCep(read.readLine());
+            editora.setEndereco(endereco);
+            fldao.facadeCadastrarEditora(editora);
+        } catch (Exception e) {
+            System.err.println("Falha ao realizar a operação");
+        }
 
-        System.out.println("Bairro");
-        endereco.setBairro(read.readLine());
-
-        System.out.println("Numero");
-        endereco.setNumero(read.readLine());
-
-        System.out.println("Cidade");
-        endereco.setCidade(read.readLine());
-
-        System.out.println("UF");
-        endereco.setUf(read.readLine());
-
-        System.out.println("Cep");
-        endereco.setCep(read.readLine());
-        
-        editora.setEndereco(endereco);
-        fldao.facadeCadastrarEditora(editora);
     }
-      
-       public void testBuscarEditora() throws Exception{
+
+    public void testBuscarEditora() throws Exception {
+        try {
             System.out.println("Nome Da Editora");
-        System.out.println(fldao.facadeBuscarEditora(read.readLine()));  
+            System.out.println(fldao.facadeBuscarEditora(read.readLine()));
+        } catch (Exception e) {
+            System.err.println("Falha ao realizar a operação");
+        }
     }
 }

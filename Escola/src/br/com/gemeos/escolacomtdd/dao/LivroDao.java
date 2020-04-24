@@ -9,6 +9,7 @@ import br.com.gemeos.escolacomtdd.conection.PersistenceUtil;
 import br.com.gemeos.escolacomtdd.model.Livro;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceUnit;
 import javax.persistence.Query;
@@ -66,9 +67,8 @@ public class LivroDao {
             query = em.createQuery("SELECT l FROM Livro l WHERE l.titulo LIKE :titulo");
             query.setParameter("titulo", titulo + "%");
             return (Livro) query.getSingleResult();
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new Exception(" Livro não encontrado!");
+        } catch (NoResultException nre) {
+            return null;
         } finally {
             PersistenceUtil.closeEntityManagerFactory();
         }
@@ -82,7 +82,7 @@ public class LivroDao {
             em.getTransaction().begin();
             em.merge(l);
             em.getTransaction().commit();
-            System.out.println("-");
+            System.out.println("Atualisado com sucesso");
         } catch (Exception e) {
             e.printStackTrace();
             em.getTransaction().rollback();
@@ -97,7 +97,7 @@ public class LivroDao {
         try {
             em = PersistenceUtil.createEntityManager();
             em.getTransaction().begin();
-           l =  em.merge(l);
+            l = em.merge(l);
             em.remove(l);
             em.getTransaction().commit();
             System.out.println("Removido com Sucesso");
@@ -105,7 +105,7 @@ public class LivroDao {
             e.printStackTrace();
             em.getTransaction().rollback();
             throw new Exception("Falha ao remover");
-        }finally{
+        } finally {
             PersistenceUtil.closeEntityManagerFactory();
         }
 
