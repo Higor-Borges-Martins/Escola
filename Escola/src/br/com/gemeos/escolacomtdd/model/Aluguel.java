@@ -28,11 +28,8 @@ public class Aluguel {
     @OneToOne
     private Livro Livro;
     @OneToOne
-    @JoinColumn(name = "idAluno", referencedColumnName = "idPessoa")
-    private Aluno idAluno;
-    @OneToOne
-    @JoinColumn(name = "idProfessor", referencedColumnName = "idPessoa")
-    private Professor idProfessor;
+    @JoinColumn(name = "idPessoa")
+   private Pessoa idPessoa;
     @Temporal(TemporalType.DATE)
     private Date diaDoAluguel;
     @Column(length = 10, nullable = true)
@@ -54,22 +51,13 @@ public class Aluguel {
         this.Livro = Livro;
     }
 
-    public Aluno getNomeDoAluno() {
-        return idAluno;
+    public Pessoa getIdPessoa() {
+        return idPessoa;
     }
 
-    public void setNomeDoAluno(Aluno nomeDoAluno) {
-        this.idAluno = nomeDoAluno;
+    public void setIdPessoa(Pessoa idPessoa) {
+        this.idPessoa = idPessoa;
     }
-
-    public Professor getNomeDoProfessor() {
-        return idProfessor;
-    }
-
-    public void setNomeDoProfessor(Professor nomeDoProfessor) {
-        this.idProfessor = nomeDoProfessor;
-    }
-
 
     public Date getDiaDoAluguel() {
         return diaDoAluguel;
@@ -91,9 +79,9 @@ public class Aluguel {
     public String toString() {
         if (status == true) {
 
-            return "Status: Pendente," + " Aluguel{" + "registro=" + registro + ", tituloLivro=" + Livro.getTitulo() + ", nome do aluno=" +idAluno.getNome() + ", nome do professor=" + idProfessor.getNome() + ", diaDoAluguel=" + diaDoAluguel + '}';
+            return "Status: Pendente," + " Aluguel{" + "registro=" + registro + ", tituloLivro=" + Livro.getTitulo() + ", Alugado por =" + idPessoa.getNome()+ ", diaDoAluguel=" + diaDoAluguel + '}';
         } else {
-            return "Status: Devolvido," +" Aluguel{" + "registro=" + registro + ",  tituloLivro=" + Livro.getTitulo() + ", nome do aluno=" + idAluno.getNome() +  ", nome do professor=" + idProfessor.getNome() +", diaDoAluguel="  + diaDoAluguel + '}';
+            return "Status: Devolvido," +" Aluguel{" + "registro=" + registro + ",  tituloLivro=" + Livro.getTitulo() +", Alugado por =" + idPessoa.getNome()+", diaDoAluguel="  + diaDoAluguel + '}';
         }
     }
 
