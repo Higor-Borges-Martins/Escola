@@ -6,10 +6,12 @@
 package br.com.gemeos.escolacomtdd.model;
 
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -20,14 +22,17 @@ import javax.persistence.TemporalType;
  */
 @Entity
 public class Aluguel {
-
     @Id
     @GeneratedValue
     private long registro;
     @OneToOne
     private Livro Livro;
-    @Column(length = 40, nullable = true)
-    private String nomeIndividuo;
+    @OneToOne
+    @JoinColumn(name = "idAluno", referencedColumnName = "idPessoa")
+    private Aluno idAluno;
+    @OneToOne
+    @JoinColumn(name = "idProfessor", referencedColumnName = "idPessoa")
+    private Professor idProfessor;
     @Temporal(TemporalType.DATE)
     private Date diaDoAluguel;
     @Column(length = 10, nullable = true)
@@ -49,13 +54,22 @@ public class Aluguel {
         this.Livro = Livro;
     }
 
-    public String getNomeIndividuo() {
-        return nomeIndividuo;
+    public Aluno getNomeDoAluno() {
+        return idAluno;
     }
 
-    public void setNomeIndividuo(String nomeIndividuo) {
-        this.nomeIndividuo = nomeIndividuo;
+    public void setNomeDoAluno(Aluno nomeDoAluno) {
+        this.idAluno = nomeDoAluno;
     }
+
+    public Professor getNomeDoProfessor() {
+        return idProfessor;
+    }
+
+    public void setNomeDoProfessor(Professor nomeDoProfessor) {
+        this.idProfessor = nomeDoProfessor;
+    }
+
 
     public Date getDiaDoAluguel() {
         return diaDoAluguel;
@@ -77,9 +91,9 @@ public class Aluguel {
     public String toString() {
         if (status == true) {
 
-            return "Status: Pendente," + " Aluguel{" + "registro=" + registro + ", tituloLivro=" + Livro + ", nomeIndividuo=" + nomeIndividuo + ", diaDoAluguel=" + diaDoAluguel + '}';
+            return "Status: Pendente," + " Aluguel{" + "registro=" + registro + ", tituloLivro=" + Livro.getTitulo() + ", nome do aluno=" +idAluno.getNome() + ", nome do professor=" + idProfessor.getNome() + ", diaDoAluguel=" + diaDoAluguel + '}';
         } else {
-            return "Status: Devolvido," +" Aluguel{" + "registro=" + registro + ", tituloLivro=" + Livro + ", nomeIndividuo=" + nomeIndividuo + ", diaDoAluguel=" + diaDoAluguel + '}';
+            return "Status: Devolvido," +" Aluguel{" + "registro=" + registro + ",  tituloLivro=" + Livro.getTitulo() + ", nome do aluno=" + idAluno.getNome() +  ", nome do professor=" + idProfessor.getNome() +", diaDoAluguel="  + diaDoAluguel + '}';
         }
     }
 

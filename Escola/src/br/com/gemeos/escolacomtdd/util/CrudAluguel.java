@@ -45,18 +45,17 @@ public class CrudAluguel {
 
         switch (resposta) {
             case "1":
-                try {
+//                try {
                     System.out.println("Aluno: 1 \n Professor: 2");
                     resposta = read.readLine();
                     if (resposta.equals("1")) {
                         System.out.println("Informe CPF");
                         System.out.println(aluno = fadao.buscarAluno(read.readLine()));
-                        alugar.setNomeIndividuo(aluno.getNome());
+                        alugar.setNomeDoAluno(aluno);
                     } else {
                         System.out.println("Informe CPF");
                         System.out.println(prof = fpdao.facadeBuscarProfessor(read.readLine()));
-                        alugar.setNomeIndividuo(prof.getNome());
-                        System.out.println(prof.getNome());
+                        alugar.setNomeDoProfessor(prof);
                     }
                     System.out.println("Titulo do Livro");
                     System.out.println(livro = fldao.facadeBuscarLivro(read.readLine()));
@@ -77,9 +76,9 @@ public class CrudAluguel {
                         System.out.println("Livro Indisponivel no momento");
                     }
 
-                } catch (Exception e) {
-                    System.err.println("Falha ao realizar a operação");
-                }
+//                } catch (Exception e) {
+//                    System.err.println("Falha ao realizar a operação");
+//                }
                 break;
             case "2":
                 try {
