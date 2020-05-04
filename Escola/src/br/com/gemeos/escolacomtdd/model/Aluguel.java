@@ -6,10 +6,13 @@
 package br.com.gemeos.escolacomtdd.model;
 
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -22,12 +25,15 @@ public class Aluguel {
     @Id
     @GeneratedValue
     private long registro;
-    @Column(length = 50,nullable = true)
-    private String tituloLivro;
-    @Column(length = 40, nullable = true)
-    private String nomeIndividuo;
+    @OneToOne
+    private Livro Livro;
+    @OneToOne
+    @JoinColumn(name = "idPessoa")
+   private Pessoa idPessoa;
     @Temporal(TemporalType.DATE)
     private Date diaDoAluguel;
+    @Column(length = 10, nullable = true)
+    private boolean status;
 
     public long getRegistro() {
         return registro;
@@ -37,20 +43,20 @@ public class Aluguel {
         this.registro = registro;
     }
 
-    public String getTituloLivro() {
-        return tituloLivro;
+    public Livro getLivro() {
+        return Livro;
     }
 
-    public void setTituloLivro(String tituloLivro) {
-        this.tituloLivro = tituloLivro;
+    public void setLivro(Livro Livro) {
+        this.Livro = Livro;
     }
 
-    public String getNomeIndividuo() {
-        return nomeIndividuo;
+    public Pessoa getIdPessoa() {
+        return idPessoa;
     }
 
-    public void setNomeIndividuo(String nomeIndividuo) {
-        this.nomeIndividuo = nomeIndividuo;
+    public void setIdPessoa(Pessoa idPessoa) {
+        this.idPessoa = idPessoa;
     }
 
     public Date getDiaDoAluguel() {
@@ -61,10 +67,22 @@ public class Aluguel {
         this.diaDoAluguel = diaDoAluguel;
     }
 
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
-        return "Aluguel{" + "registro=" + registro + ", tituloLivro=" + tituloLivro + ", nomeIndividuo=" + nomeIndividuo + ", diaDoAluguel=" + diaDoAluguel + '}';
+        if (status == true) {
+
+            return "Status: Pendente," + " Aluguel{" + "registro=" + registro + ", tituloLivro=" + Livro.getTitulo() + ", Alugado por =" + idPessoa.getNome()+ ", diaDoAluguel=" + diaDoAluguel + '}';
+        } else {
+            return "Status: Devolvido," +" Aluguel{" + "registro=" + registro + ",  tituloLivro=" + Livro.getTitulo() +", Alugado por =" + idPessoa.getNome()+", diaDoAluguel="  + diaDoAluguel + '}';
+        }
     }
-    
-    
+
 }

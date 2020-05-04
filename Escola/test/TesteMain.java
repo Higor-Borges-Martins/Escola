@@ -51,7 +51,7 @@ public class TesteMain {
                     livro.livroEmExecução();
                     break;
                 case "4":
-                    aluguel.AluguelEmExecução();
+                  //  aluguel.AluguelEmExecução();
                     break;
                 case "0":
                     System.out.println("Fechando o sistema");

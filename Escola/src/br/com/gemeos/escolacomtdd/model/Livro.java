@@ -6,12 +6,16 @@
 package br.com.gemeos.escolacomtdd.model;
 
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 
 /**
  *
@@ -22,19 +26,19 @@ public class Livro {
 
     @Id
     @GeneratedValue
-    long idLivro;
+    private long idLivro;
     @Column(length = 100, nullable = true)
-    String titulo;
-    @Column(length = 100, nullable = true)
-    String autor;
+    private String titulo;
+    @ManyToOne
+    private Autor autor;
     @Temporal(TemporalType.DATE)
-    Date anoDePublicacao;
-    @Column(length = 100, nullable = true)
-    String editora;
-    @Column( length = 3, nullable = false)
-    String numeroDeEdicao;
+    private Date anoDePublicacao;
+    @ManyToOne
+    private Editora editora;
+    @Column(length = 3, nullable = false)
+    private String numeroDeEdicao;
     @Column(length = 3, nullable = true)
-    double Copias;
+    private double Copias;
 
     public long getIdLivro() {
         return idLivro;
@@ -52,13 +56,15 @@ public class Livro {
         this.titulo = titulo;
     }
 
-    public String getAutor() {
+    public Autor getAutor() {
         return autor;
     }
 
-    public void setAutor(String autor) {
+    public void setAutor(Autor autor) {
         this.autor = autor;
     }
+
+   
 
     public Date getAnoDePublicacao() {
         return anoDePublicacao;
@@ -68,11 +74,11 @@ public class Livro {
         this.anoDePublicacao = anoDePublicacao;
     }
 
-    public String getEditora() {
+    public Editora getEditora() {
         return editora;
     }
 
-    public void setEditora(String editora) {
+    public void setEditora(Editora editora) {
         this.editora = editora;
     }
 
@@ -92,11 +98,9 @@ public class Livro {
         this.Copias = Copias;
     }
 
-   
-
     @Override
     public String toString() {
-        return "Livro{" + "idLivro=" + idLivro + ", titulo=" + titulo + ", autor=" + autor + ", anoDePublicacao=" + anoDePublicacao + ", editora=" + editora + ", numeroDeEdicao=" + numeroDeEdicao + ", numeroDeCopias=" + Copias + '}';
+        return "Livro{ " + "idLivro= " + idLivro + ", titulo= " + titulo + ", autor= " + autor + ", anoDePublicacao= " + anoDePublicacao + ", editora= " + editora + ", numeroDeEdicao= " + numeroDeEdicao + ", numero De Copias Disponiveis para Aluguel= " + Copias + '}';
     }
 
 }

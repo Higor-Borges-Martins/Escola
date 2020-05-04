@@ -5,11 +5,15 @@ import br.com.gemeos.escolacomtdd.facade.FacadeLivro;
 import br.com.gemeos.escolacomtdd.facade.FacadeProfessor;
 import br.com.gemeos.escolacomtdd.model.Aluguel;
 import br.com.gemeos.escolacomtdd.model.Aluno;
+import br.com.gemeos.escolacomtdd.model.Autor;
+import br.com.gemeos.escolacomtdd.model.Editora;
 import br.com.gemeos.escolacomtdd.model.Endereco;
 import br.com.gemeos.escolacomtdd.model.Livro;
 import br.com.gemeos.escolacomtdd.model.Professor;
 import br.com.gemeos.escolacomtdd.util.Conversor;
 import br.com.gemeos.escolacomtdd.util.CrudAluno;
+import br.com.gemeos.escolacomtdd.util.MetodosDeAutorEditora;
+import java.text.ParseException;
 import org.junit.Test;
 
 /*
@@ -28,12 +32,15 @@ public class TesteTDD {
     private Aluguel alugar = new Aluguel();
     private Livro livro = new Livro();
     private Endereco endereco = new Endereco();
+    private Autor autor = new Autor();
+    private Editora editora = new Editora();
     private FacadeAluno fadao = new FacadeAluno();
     private FacadeProfessor fpdao = new FacadeProfessor();
     private FacadeLivro fldao = new FacadeLivro();
     private FacadeAluguel facadeAlugar = new FacadeAluguel();
     private Conversor conversor = new Conversor();
     private CrudAluno cruda = new CrudAluno();
+    private MetodosDeAutorEditora metodos = new MetodosDeAutorEditora();
 
     public TesteTDD() {
     }
@@ -88,7 +95,12 @@ public class TesteTDD {
 //    @Test
 //    public void testBuscarAluno() throws Exception {
 //        System.out.println("cpf do aluno");
-//        System.out.println(fadao.buscarAluno("123.456.789-10"));
+//        aluno = fadao.buscarAluno("123.456.789-101");
+//        if (aluno != null) {
+//            System.out.println(aluno);
+//        } else {
+//            System.out.println("Não foi encontrado");
+//        }
 //    }
 //    public void testEditarAluno() throws ParseException, Exception {
 //
@@ -167,8 +179,14 @@ public class TesteTDD {
 //        }
 //    }
 //    @Test
-//    public void testBuscarProfessor() throws Exception{
-//        System.out.println(fpdao.facadeBuscarProfessor("123.456.789-10"));
+//    public void testBuscarProfessor() throws Exception {
+//
+//        prof = fpdao.facadeBuscarProfessor("123.456.789-101");
+//        if (prof != null) {
+//            System.out.println(prof);
+//        } else {
+//            System.out.println("Não foi encontrado");
+//        }
 //    }
 //    
 //    @Test
@@ -184,37 +202,52 @@ public class TesteTDD {
 //        fpdao.facadeRemoverProfessor(prof);
 //    }
 //    @Test
-//    public void testCadastrarLivro() throws ParseException{
-//        
+//    public void testCadastrarLivro() throws ParseException, Exception {
+//
 //        System.out.println("Titulo do Livro");
-//        livro.setTitulo("Teste2");
+//        livro.setTitulo("Teste4");
 //        System.out.println("Nome do Autor");
-//        livro.setAutor("Testador");
-//        System.out.println("Ano de Publicação");
-//        livro.setAnoDePublicacao(conversor.stringParaData("11/11/1111"));
-//        System.out.println("Editora");
-//        livro.setEditora("Top crow");
-//        System.out.println("Edição");
-//        livro.setNumeroDeEdicao("6 °");
-//        System.out.println("Informe o número de copias");
-//        livro.setCopias(1);
-//        fldao.facadeCadastrarLivro(livro);
+//        autor = fldao.facadeBuscarAutor("Alexandre Dumas");
+//        if (autor != null) {
+//            livro.setAutor(autor);
+//            System.out.println("Ano de Publicação");
+//            livro.setAnoDePublicacao(conversor.stringParaData("11/11/1111"));
+//            System.out.println("Editora");
+//            editora = fldao.facadeBuscarEditora("Teste2");
+//            livro.setEditora(editora);
+//            System.out.println("Edição");
+//            livro.setNumeroDeEdicao("6 °");
+//            System.out.println("Informe o número de copias");
+//            livro.setCopias(1);
+//            fldao.facadeCadastrarLivro(livro);
+//        } else {
+//            metodos.CadastrarAutor();
+//        }
 //    }
-//    
 //    @Test
-//    public void testListarLivros() throws Exception{
-//        for(Livro perc: fldao.facadeListaLivro())
+//    public void testListarLivros() throws Exception {
+//        for (Livro perc : fldao.facadeListaLivro()) {
 //            System.out.println(perc);
+//        }
 //    }
 //    @Test
 //    public void testAtualisarQuantidadeLivro() throws Exception{
 //        livro = fldao.facadeBuscarLivro("Teste");
-//        livro.setCopias(livro.getCopias()+conversor.StringParaDouble("2"));
+//        if(livro !=null){
+//            livro.setCopias(livro.getCopias()+conversor.StringParaDouble("2"));
 //        fldao.facadeAtualizarLivro(livro);
+//        }else{
+//            System.out.println("Livro não encontrado");
+//        }
 //    }
 //    @Test
-//    public void testBuscarLivro() throws Exception{
-//        System.out.println(fldao.facadeBuscarLivro("Teste"));
+//    public void testBuscarLivro() throws Exception {
+//        livro = fldao.facadeBuscarLivro("este");
+//        if(livro != null){
+//            System.out.println(livro);
+//        }else{
+//            System.out.println("Não foi encontrado");
+//        }
 //    }
 //    @Test
 //    public void testRemoverLivro() throws Exception{
@@ -222,6 +255,7 @@ public class TesteTDD {
 //        livro = fldao.facadeBuscarLivro("Teste2");
 //        fldao.facadeRemoverLivro(livro);
 //    }
+<<<<<<< HEAD
     @Test
     public void testAlugarLivro() throws Exception {
         String resposta;
@@ -284,5 +318,115 @@ public class TesteTDD {
 //        livro.setCopias(livro.getCopias() + 1);
 //        fldao.facadeAtualizarLivro(livro);
 //        facadeAlugar.facadeDevolverLivro(alugar);
+=======
+//    @Test
+//    public void testAlugarLivro() throws Exception {
+//        String resposta;
+////        try {
+//            System.out.println("Aluno: 1 \n Professor: 2");
+//            resposta = "1";
+//            if (resposta.equals("1")) {
+//                System.out.println("Informe CPF");
+//                aluno = fadao.buscarAluno("123.456.789-10");
+//                System.out.println(aluno);
+//                alugar.setIdPessoa(aluno);
+//            } else {
+//                System.out.println("Informe CPF");
+//                prof = fpdao.facadeBuscarProfessor("123.456.789-02");
+//                System.out.println(prof);
+//                alugar.setIdPessoa(prof);
+//            }
+//            System.out.println("Titulo do Livro");
+//            System.out.println(livro = fldao.facadeBuscarLivro("Teste Novo"));
+//            if (livro != null) {
+//                alugar.setLivro(livro);
+//            } else {
+//                System.out.println("Livro não encontrado no sistema");
+//            }
+//            if (livro.getCopias() != 0) {
+//                livro.setCopias(livro.getCopias() - 1);
+//                fldao.facadeAtualizarLivro(livro);
+//                System.out.println("Data em que o aluguel foi efetuado");
+//                alugar.setDiaDoAluguel(conversor.stringParaData("28/04/2020"));
+//                alugar.setStatus(true);
+//                facadeAlugar.facadeAlugarLivro(alugar);
+//            } else {
+//                System.out.println("Livro Indisponivel no momento");
+//            }
+//        } catch (Exception e) {
+//            System.err.println("Falha ao realizar a operação");
+//        }
+//    }
+    @Test
+    public void testAlugueisPendentes() throws Exception {
+        for (Aluguel perc : facadeAlugar.facadeListarAluguel()) {
+            System.out.println(perc);
+        }
+    }
+    @Test
+    public void testPesquisarAluguel() throws Exception {
+        System.out.println("Informe o registro do Aluguel");
+        System.out.println(facadeAlugar.facadePesquisarAluguel(conversor.StringParaLong("103")));
+    }
+    @Test
+    public void testDevolverLitro() throws Exception {
+        System.out.println("Informe o registro do aluguel");
+        System.out.println( alugar = facadeAlugar.facadePesquisarAluguel(conversor.StringParaLong("103")));
+        alugar.setStatus(false);
+        livro = alugar.getLivro();
+        livro.setCopias(livro.getCopias() + 1);
+        fldao.facadeAtualizarLivro(livro);
+        facadeAlugar.facadeDevolverLivro(alugar);
+    }
+//    
+//    @Test
+//    public void testCadastrarAutor() throws ParseException{
+//        System.out.println("Nome do Autor");
+//        autor.setNomeAutor("Alexandre Dumas Pai");
+//        System.out.println("Data de Nascimento");
+//        autor.setDtNascimento(conversor.stringParaData("24/07/1802"));
+//        System.out.println("Data de Falecimento");
+//        autor.setDtMorte(conversor.stringParaData("05/12/1870"));
+//        System.out.println("Nacionalidade");
+//        autor.setNacionalidade("Frances");
+//        System.out.println("Generos Literarios");
+//        autor.setGeneroLiterari("Romance e drama");
+//        fldao.facadeCadastrarAutor(autor);
+//    }
+//    @Test
+//    public void testBucarAutor() throws Exception{
+//        System.out.println("Nome do Autor");
+//        System.out.println(fldao.facadeBuscarAutor("top"));
+//    } 
+//    @Test
+//    public void testCadastrarEditora() {
+//        System.out.println("Nome da Editora");
+//        editora.setNomeEditora("Teste3");
+//
+//        System.out.println("Rua do Aluno");
+//        endereco.setRua("teste");
+//
+//        System.out.println("Bairro do Aluno");
+//        endereco.setBairro("teste");
+//
+//        System.out.println("Numero da casa");
+//        endereco.setNumero("teste");
+//
+//        System.out.println("Cidade do Aluno");
+//        endereco.setCidade("teste");
+//
+//        System.out.println("UF do Aluno");
+//        endereco.setUf("tt");
+//
+//        System.out.println("Cep do Aluno");
+//        endereco.setCep("11111-111");
+//        
+//        editora.setEndereco(endereco);
+//        fldao.facadeCadastrarEditora(editora);
+//    }
+//    @Test
+//    public void testBuscarEditora() throws Exception{
+//        System.out.println(fldao.facadeBuscarEditora("top"));  
+>>>>>>> Higor
 //    }
 }

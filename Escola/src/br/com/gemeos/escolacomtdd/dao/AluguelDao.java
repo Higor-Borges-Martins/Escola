@@ -73,9 +73,8 @@ public class AluguelDao {
             em = PersistenceUtil.createEntityManager();
             em.getTransaction().begin();
             alugar = em.merge(alugar);
-            em.remove(alugar);
             em.getTransaction().commit();
-            System.out.println("Aluguel removido dos registros");
+            System.out.println("Livro Devolvido");
         } catch (Exception e) {
             e.printStackTrace();
             em.getTransaction().rollback();

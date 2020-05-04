@@ -10,6 +10,7 @@ import br.com.gemeos.escolacomtdd.model.Professor;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 /**
@@ -64,9 +65,8 @@ public class ProfessorDao {
             query = em.createQuery("SELECT p FROM Professor p WHERE p.cpf LIKE :cpf");
             query.setParameter("cpf", cpf + "%");
             return (Professor) query.getSingleResult();
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new Exception("Professor não Encontrado");
+        } catch (NoResultException nre) {
+           return null;
         } finally {
             PersistenceUtil.closeEntityManagerFactory();
         }

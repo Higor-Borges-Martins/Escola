@@ -14,6 +14,7 @@ import br.com.gemeos.escolacomtdd.util.CrudAluguel;
 import br.com.gemeos.escolacomtdd.util.CrudAluno;
 import br.com.gemeos.escolacomtdd.util.CrudLivro;
 import br.com.gemeos.escolacomtdd.util.CrudProfessor;
+import br.com.gemeos.escolacomtdd.util.MetodosDeAutorEditora;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -36,7 +37,7 @@ public class Main {
         CrudLivro livro = new CrudLivro();
         CrudAluguel aluguel = new CrudAluguel();
         String resposta = new String();
-
+       
         while (!resposta.equals("0")) {
             System.out.println("----- MENU -----");
             System.out.println("1 - ALUNO");
