@@ -11,6 +11,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
@@ -100,7 +101,7 @@ public class Livro {
 
     @Override
     public String toString() {
-        return "Livro{ " + "idLivro= " + idLivro + ", titulo= " + titulo + ", autor= " + autor.getNomeAutor() + ", anoDePublicacao= " + anoDePublicacao + ", editora= " + editora.getNomeEditora() + ", numeroDeEdicao= " + numeroDeEdicao + ", numero De Copias Disponiveis para Aluguel= " + Copias + '}';
+        return "Livro{ " + "idLivro= " + idLivro + ", titulo= " + titulo + ", autor= " + autor.getNomeAutor() + ", anoDePublicacao= " + anoDePublicacao + ", editora= " + editora.getNomeEditora()+ ", numeroDeEdicao= " + numeroDeEdicao + ", numero De Copias Disponiveis para Aluguel= " + Copias + '}';
     }
 
 }

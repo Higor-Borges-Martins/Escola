@@ -294,12 +294,12 @@ public class TesteTDD {
 //            System.err.println("Falha ao realizar a operação");
 //        }
 //    }
-    @Test
-    public void testAlugueisPendentes() throws Exception {
-        for (Aluguel perc : facadeAlugar.facadeListarAluguel()) {
-            System.out.println(perc);
-        }
-    }
+//    @Test
+//    public void testAlugueisPendentes() throws Exception {
+//        for (Aluguel perc : facadeAlugar.facadeListarAluguel()) {
+//            System.out.println(perc);
+//        }
+//    }
 //    @Test
 //    public void testPesquisarAluguel() throws Exception {
 //        System.out.println("Informe o registro do Aluguel");
