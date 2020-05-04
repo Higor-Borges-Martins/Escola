@@ -79,9 +79,9 @@ public class Aluguel {
     public String toString() {
         if (status == true) {
 
-            return "Status: Pendente," + " Aluguel{" + "registro=" + registro + ", tituloLivro=" + Livro.getTitulo() + ", Alugado por =" + idPessoa.getNome()+ ", diaDoAluguel=" + diaDoAluguel + '}';
+            return "Status: Pendente," + " Aluguel{ " + "registro=" + registro + ", tituloLivro=" + Livro.getTitulo() + ", Alugado por =" + idPessoa.getNome()+ ", diaDoAluguel=" + diaDoAluguel + '}';
         } else {
-            return "Status: Devolvido," +" Aluguel{" + "registro=" + registro + ",  tituloLivro=" + Livro.getTitulo() +", Alugado por =" + idPessoa.getNome()+", diaDoAluguel="  + diaDoAluguel + '}';
+            return "Status: Devolvido," +" Aluguel{ " + "registro=" + registro + ",  tituloLivro=" + Livro.getTitulo() +", Alugado por =" + idPessoa.getNome()+", diaDoAluguel="  + diaDoAluguel + '}';
         }
     }
 

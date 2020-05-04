@@ -45,24 +45,6 @@ public class CrudAluguel {
 
         switch (resposta) {
             case "1":
-<<<<<<< HEAD
-                System.out.println(" Aluno: 1 \n Professor: 2");
-                resposta = read.readLine();
-                if (resposta.equals("1")) {
-                    System.out.println("Informe CPF");
-                    aluno = fadao.buscarAluno(read.readLine());
-                    System.out.println(aluno);
-                    alugar.setNomeIndividuo(aluno.getNome());
-                    System.out.println("Titulo do Livro");
-                    alugar.setTituloLivro(read.readLine());
-                    livro = fldao.facadeBuscarLivro(alugar.getTituloLivro());
-                    if (livro.getCopias() != 0) {
-                        livro.setCopias(livro.getCopias() - 1);
-                        fldao.facadeAtualizarLivro(livro);
-                        System.out.println("Data em que o aluguel foi efetuado");
-                        alugar.setDiaDoAluguel(conversor.stringParaData(read.readLine()));
-                        facadeAlugar.facadeAlugarLivro(alugar);
-=======
                 try {
                     System.out.println("Aluno: 1 \n Professor: 2");
                     resposta = read.readLine();
@@ -70,7 +52,6 @@ public class CrudAluguel {
                         System.out.println("Informe CPF");
                         System.out.println(aluno = fadao.buscarAluno(read.readLine()));
                         alugar.setIdPessoa(aluno);
->>>>>>> Higor
                     } else {
                         System.out.println("Informe CPF");
                         System.out.println(prof = fpdao.facadeBuscarProfessor(read.readLine()));

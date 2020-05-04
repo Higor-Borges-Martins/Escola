@@ -64,6 +64,9 @@ public class Main {
                     System.out.println("Fechando o sistema");
                     System.exit(0);
                     break;
+                    
+                default:
+                    System.out.println("Opção Invalida");
             }
         }
     }
