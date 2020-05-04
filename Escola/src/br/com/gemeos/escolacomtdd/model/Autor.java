@@ -33,7 +33,7 @@ public class Autor {
     @Column(length = 30, nullable = true)
     private String nacionalidade;
     @Column(length = 30, nullable = true)
-    private String generoLiterari;
+    private String generoLiterario;
 
     public long getIdAutor() {
         return idAutor;
@@ -76,15 +76,15 @@ public class Autor {
     }
 
     public String getGeneroLiterari() {
-        return generoLiterari;
+        return generoLiterario;
     }
 
     public void setGeneroLiterari(String generoLiterari) {
-        this.generoLiterari = generoLiterari;
+        this.generoLiterario = generoLiterari;
     }
 
     @Override
     public String toString() {
-        return "Autor{" + "idAutor=" + idAutor + ", nomeAutor=" + nomeAutor + ", dtNascimento=" + dtNascimento + ", dtMorte=" + dtMorte + ", nacionalidade=" + nacionalidade + ", generoLiterari=" + generoLiterari + '}';
+        return "Autor{" + "idAutor=" + idAutor + ", nomeAutor=" + nomeAutor + ", dtNascimento=" + dtNascimento + ", dtMorte=" + dtMorte + ", nacionalidade=" + nacionalidade + ", generoLiterari=" + generoLiterario + '}';
     }
 }

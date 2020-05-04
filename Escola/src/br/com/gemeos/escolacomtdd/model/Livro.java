@@ -100,7 +100,7 @@ public class Livro {
 
     @Override
     public String toString() {
-        return "Livro{ " + "idLivro= " + idLivro + ", titulo= " + titulo + ", autor= " + autor + ", anoDePublicacao= " + anoDePublicacao + ", editora= " + editora + ", numeroDeEdicao= " + numeroDeEdicao + ", numero De Copias Disponiveis para Aluguel= " + Copias + '}';
+        return "Livro{ " + "idLivro= " + idLivro + ", titulo= " + titulo + ", autor= " + autor.getNomeAutor() + ", anoDePublicacao= " + anoDePublicacao + ", editora= " + editora.getNomeEditora() + ", numeroDeEdicao= " + numeroDeEdicao + ", numero De Copias Disponiveis para Aluguel= " + Copias + '}';
     }
 
 }
