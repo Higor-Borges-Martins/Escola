@@ -6,7 +6,6 @@
 package br.com.gemeos.escolacomtdd.model;
 
 import java.util.Date;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,7 +25,8 @@ public class Aluguel {
     @GeneratedValue
     private long registro;
     @OneToOne
-    private Livro Livro;
+    @JoinColumn(name = "idLivro")
+    private Livro idLivro;
     @OneToOne
     @JoinColumn(name = "idPessoa")
    private Pessoa idPessoa;
@@ -44,15 +44,15 @@ public class Aluguel {
     }
 
     public Livro getLivro() {
-        return Livro;
+        return this.idLivro;
     }
 
     public void setLivro(Livro Livro) {
-        this.Livro = Livro;
+        this.idLivro = Livro;
     }
 
     public Pessoa getIdPessoa() {
-        return idPessoa;
+        return this.idPessoa;
     }
 
     public void setIdPessoa(Pessoa idPessoa) {
@@ -79,9 +79,9 @@ public class Aluguel {
     public String toString() {
         if (status == true) {
 
-            return "Status: Pendente," + " Aluguel{ " + "registro=" + registro + ", tituloLivro=" + Livro.getTitulo() + ", Alugado por =" + idPessoa.getNome()+ ", diaDoAluguel=" + diaDoAluguel + '}';
+            return "Status: Pendente," + " Aluguel{ " + "registro=" + registro + ", tituloLivro=" + idLivro.getTitulo() + ", Alugado por =" + idPessoa.getNome() + ", diaDoAluguel=" + diaDoAluguel + '}';
         } else {
-            return "Status: Devolvido," +" Aluguel{ " + "registro=" + registro + ",  tituloLivro=" + Livro.getTitulo() +", Alugado por =" + idPessoa.getNome()+", diaDoAluguel="  + diaDoAluguel + '}';
+            return "Status: Devolvido," +" Aluguel{ " + "registro=" + registro + ",  tituloLivro=" + idLivro.getTitulo() +", Alugado por =" + idPessoa.getNome() + ", diaDoAluguel="  + diaDoAluguel + '}';
         }
     }
 

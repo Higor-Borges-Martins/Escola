@@ -81,13 +81,13 @@ public class CrudAluguel {
                 }
                 break;
             case "2":
-                try {
+//                try {
                     for (Aluguel perc : facadeAlugar.facadeListarAluguel()) {
                         System.out.println(perc);
                     }
-                } catch (Exception e) {
-                    System.err.println("Falha ao realizar a operação");
-                }
+//                } catch (Exception e) {
+//                    System.err.println("Falha ao realizar a operação");
+//                }
                 break;
 
             case "3":

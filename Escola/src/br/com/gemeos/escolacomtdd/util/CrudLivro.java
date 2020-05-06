@@ -37,42 +37,43 @@ public class CrudLivro {
         System.out.println("3 - ATUALIZAR QUANTIDADE DE COPIAS DE UM LIVRO");
         System.out.println("4 - REMOVER LIVRO");
         System.out.println("5 - BUSCAR LIVRO");
+        System.out.println("6 - Listar por Autor");
         resposta = read.readLine();
 
         switch (resposta) {
             case "1":
 
-                try {
-                    System.out.println("Titulo do Livro");
-                    livro.setTitulo(read.readLine());
-                    System.out.println("Nome do Autor");
-                    autor = fldao.facadeBuscarAutor(read.readLine());
-                    if (autor != null) {
-                        livro.setAutor(autor);
-                    } else {
-                        System.out.println("Autor não encontrado. \n Por favor cadastre o autor no banco de dados");
-                        metodos.CadastrarAutor();
-                        break;
-                    }
-                    System.out.println("Ano de Publicação");
-                    livro.setAnoDePublicacao(conversor.stringParaData(read.readLine()));
-                    System.out.println("Editora");
-                    editora = fldao.facadeBuscarEditora(read.readLine());
-                    if (editora != null) {
-                        livro.setEditora(editora);
-                    } else {
-                        System.out.println("Editora não encontrado.\n Por favor cadastre a Editora no banco de dados");
-                        metodos.CadastrarEditora();
-                        break;
-                    }
-                    System.out.println("Edição");
-                    livro.setNumeroDeEdicao(read.readLine());
-                    System.out.println("Informe o número de copias");
-                    livro.setCopias(conversor.StringParaDouble(read.readLine()));
-                    fldao.facadeCadastrarLivro(livro);
-                } catch (Exception e) {
-                    System.err.println("Falha ao realizar a operação");
+//                try {
+                System.out.println("Titulo do Livro");
+                livro.setTitulo(read.readLine());
+                System.out.println("Nome do Autor");
+                autor = fldao.facadeBuscarAutor(read.readLine());
+                if (autor != null) {
+                    livro.setAutor(autor);
+                } else {
+                    System.out.println("Autor não encontrado. \n Por favor cadastre o autor no banco de dados");
+                    metodos.CadastrarAutor();
+                    break;
                 }
+                System.out.println("Ano de Publicação");
+                livro.setAnoDePublicacao(conversor.stringParaData(read.readLine()));
+                System.out.println("Editora");
+                editora = fldao.facadeBuscarEditora(read.readLine());
+                if (editora != null) {
+                    livro.setEditora(editora);
+                } else {
+                    System.out.println("Editora não encontrado.\n Por favor cadastre a Editora no banco de dados");
+                    metodos.CadastrarEditora();
+                    break;
+                }
+                System.out.println("Edição");
+                livro.setNumeroDeEdicao(read.readLine());
+                System.out.println("Informe o número de copias");
+                livro.setCopias(conversor.StringParaDouble(read.readLine()));
+                fldao.facadeCadastrarLivro(livro);
+//                } catch (Exception e) {
+//                    System.err.println("Falha ao realizar a operação");
+//                }
                 break;
 
             case "2":
@@ -125,6 +126,21 @@ public class CrudLivro {
                 } catch (Exception e) {
                     System.err.println("Falha ao realizar a operação");
                 }
+                break;
+
+            case "6":
+                try {
+                    System.out.println("Informe o nome do autor");
+                    resposta = read.readLine();
+                    for (Livro perc : fldao.facadeListaLivro()) {
+                        if (perc.getAutor().getNomeAutor().equals(resposta)) {
+                            System.out.println(perc);
+                        }
+                    }
+                } catch (Exception e) {
+                    System.out.println("Falha ao realizar a oeração");
+                }
+                
                 break;
 
             default:

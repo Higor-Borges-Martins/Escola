@@ -6,14 +6,12 @@
 package br.com.gemeos.escolacomtdd.model;
 
 import java.util.Date;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -31,10 +29,12 @@ public class Livro {
     @Column(length = 100, nullable = true)
     private String titulo;
     @ManyToOne
+    @JoinColumn (name = "autor")
     private Autor autor;
     @Temporal(TemporalType.DATE)
     private Date anoDePublicacao;
     @ManyToOne
+    @JoinColumn (name = "editora")
     private Editora editora;
     @Column(length = 3, nullable = false)
     private String numeroDeEdicao;

@@ -214,7 +214,7 @@ public class TesteTDD {
 //            System.out.println("Ano de Publicação");
 //            livro.setAnoDePublicacao(conversor.stringParaData("11/11/1111"));
 //            System.out.println("Editora");
-//            editora = fldao.facadeBuscarEditora("Teste2");
+//            editora = fldao.facadeBuscarEditora("Teste3");
 //            livro.setEditora(editora);
 //            System.out.println("Edição");
 //            livro.setNumeroDeEdicao("6 °");
@@ -225,12 +225,12 @@ public class TesteTDD {
 //            metodos.CadastrarAutor();
 //        }
 //    }
-    @Test
-    public void testListarLivros() throws Exception {
-        for (Livro perc : fldao.facadeListaLivro()) {
-            System.out.println(perc);
-        }
-    }
+//    @Test
+//    public void testListarLivros() throws Exception {
+//        for (Livro perc : fldao.facadeListaLivro()) {
+//            System.out.println(perc);
+//        }
+//    }
 //    @Test
 //    public void testAtualisarQuantidadeLivro() throws Exception{
 //        livro = fldao.facadeBuscarLivro("Teste");
@@ -243,7 +243,7 @@ public class TesteTDD {
 //    }
 //    @Test
 //    public void testBuscarLivro() throws Exception {
-//        livro = fldao.facadeBuscarLivro("este");
+//        livro = fldao.facadeBuscarLivro("Test5");
 //        if(livro != null){
 //            System.out.println(livro);
 //        }else{
@@ -253,13 +253,13 @@ public class TesteTDD {
 //    @Test
 //    public void testRemoverLivro() throws Exception{
 //        
-//        livro = fldao.facadeBuscarLivro("Teste2");
+//        livro = fldao.facadeBuscarLivro("Test5");
 //        fldao.facadeRemoverLivro(livro);
 //    }
 //    @Test
 //    public void testAlugarLivro() throws Exception {
 //        String resposta;
-////        try {
+//       try {
 //            System.out.println("Aluno: 1 \n Professor: 2");
 //            resposta = "1";
 //            if (resposta.equals("1")) {
@@ -274,7 +274,7 @@ public class TesteTDD {
 //                alugar.setIdPessoa(prof);
 //            }
 //            System.out.println("Titulo do Livro");
-//            System.out.println(livro = fldao.facadeBuscarLivro("Teste Novo"));
+//            System.out.println(livro = fldao.facadeBuscarLivro("Teste"));
 //            if (livro != null) {
 //                alugar.setLivro(livro);
 //            } else {
@@ -300,22 +300,22 @@ public class TesteTDD {
 //            System.out.println(perc);
 //        }
 //    }
-//    @Test
-//    public void testPesquisarAluguel() throws Exception {
-//        System.out.println("Informe o registro do Aluguel");
-//        System.out.println(facadeAlugar.facadePesquisarAluguel(conversor.StringParaLong("103")));
-//    }
+    @Test
+    public void testPesquisarAluguel() throws Exception {
+        System.out.println("Informe o registro do Aluguel");
+        System.out.println(facadeAlugar.facadePesquisarAluguel(conversor.StringParaLong("133")));
+    }
 //    @Test
 //    public void testDevolverLitro() throws Exception {
 //        System.out.println("Informe o registro do aluguel");
-//        System.out.println( alugar = facadeAlugar.facadePesquisarAluguel(conversor.StringParaLong("103")));
+//        System.out.println( alugar = facadeAlugar.facadePesquisarAluguel(conversor.StringParaLong("132")));
 //        alugar.setStatus(false);
 //        livro = alugar.getLivro();
 //        livro.setCopias(livro.getCopias() + 1);
 //        fldao.facadeAtualizarLivro(livro);
 //        facadeAlugar.facadeDevolverLivro(alugar);
 //    }
-//    
+    
 //    @Test
 //    public void testCadastrarAutor() throws ParseException{
 //        System.out.println("Nome do Autor");
@@ -365,15 +365,15 @@ public class TesteTDD {
 //    public void testBuscarEditora() throws Exception{
 //        System.out.println(fldao.facadeBuscarEditora("top"));  
 //    }
-  @Test
-    public void testListarPorAutor() throws Exception {
-        String resposta;
-        System.out.println("Informe o nome do autor");
-        resposta = "Teste do if";
-        for (Livro perc : fldao.facadeListaLivro()) {
-            if (perc.getAutor().getNomeAutor().equals(resposta)) {
-                System.out.println(perc);
-            }
-        }
-    }
+//  @Test
+//    public void testListarPorAutor() throws Exception {
+//        String resposta;
+//        System.out.println("Informe o nome do autor");
+//        resposta = "Teste do if";
+//        for (Livro perc : fldao.facadeListaLivro()) {
+//            if (perc.getAutor().getNomeAutor().equals(resposta)) {
+//                System.out.println(perc);
+//            }
+//        }
+//    }
 }

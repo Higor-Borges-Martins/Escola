@@ -7,10 +7,9 @@ package br.com.gemeos.escolacomtdd.dao;
 
 import br.com.gemeos.escolacomtdd.conection.PersistenceUtil;
 import br.com.gemeos.escolacomtdd.model.Aluguel;
-import br.com.gemeos.escolacomtdd.model.Livro;
 import java.util.List;
-import javax.persistence.Entity;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 /**
@@ -39,7 +38,7 @@ public class AluguelDao {
 
     }
 
-    public List<Aluguel> listarAlugueis() throws Exception {
+      public List<Aluguel> listarAlugueis() throws Exception {
 
         try {
 
@@ -58,17 +57,19 @@ public class AluguelDao {
     public Aluguel pesquisarAluguel(long registro) throws Exception {
         try {
             em = PersistenceUtil.createEntityManager();
-            return em.find(Aluguel.class, registro);
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new Exception("Registro não encontrado");
+            em.getTransaction().begin();
+            query = em.createQuery("SELECT alugar FROM Aluguel alugar WHERE alugar.registro LIKE :registro");
+            query.setParameter("registro", registro + "%");
+            return (Aluguel) query.getSingleResult();
+        } catch (NoResultException nre) {
+          return null;
         } finally {
             PersistenceUtil.closeEntityManagerFactory();
         }
     }
-    
-    public void DevolverLivro(Aluguel alugar) throws Exception{
-        
+
+    public void DevolverLivro(Aluguel alugar) throws Exception {
+
         try {
             em = PersistenceUtil.createEntityManager();
             em.getTransaction().begin();
@@ -78,7 +79,7 @@ public class AluguelDao {
         } catch (Exception e) {
             e.printStackTrace();
             em.getTransaction().rollback();
-             throw new Exception("Falha ao realisar a função");
+            throw new Exception("Falha ao realisar a função");
         }
     }
 }

@@ -10,8 +10,6 @@ import br.com.gemeos.escolacomtdd.model.Livro;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
-import javax.persistence.Persistence;
-import javax.persistence.PersistenceUnit;
 import javax.persistence.Query;
 
 /**
