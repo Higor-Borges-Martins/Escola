@@ -58,8 +58,8 @@ public class AluguelDao {
         try {
             em = PersistenceUtil.createEntityManager();
             em.getTransaction().begin();
-            query = em.createQuery("SELECT alugar FROM Aluguel alugar WHERE alugar.registro LIKE :registro");
-            query.setParameter("registro", registro + "%");
+            query = em.createQuery("SELECT alugar FROM Aluguel alugar WHERE alugar.registro = :registro");
+            query.setParameter("registro", registro);
             return (Aluguel) query.getSingleResult();
         } catch (NoResultException nre) {
           return null;

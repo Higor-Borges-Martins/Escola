@@ -303,7 +303,7 @@ public class TesteTDD {
     @Test
     public void testPesquisarAluguel() throws Exception {
         System.out.println("Informe o registro do Aluguel");
-        System.out.println(facadeAlugar.facadePesquisarAluguel(conversor.StringParaLong("133")));
+        System.out.println(facadeAlugar.facadePesquisarAluguel(conversor.StringParaLong("136")));
     }
 //    @Test
 //    public void testDevolverLitro() throws Exception {
