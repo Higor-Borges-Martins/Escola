@@ -43,7 +43,7 @@ public class CrudLivro {
         switch (resposta) {
             case "1":
 
-//                try {
+                try {
                 System.out.println("Titulo do Livro");
                 livro.setTitulo(read.readLine());
                 System.out.println("Nome do Autor");
@@ -71,9 +71,9 @@ public class CrudLivro {
                 System.out.println("Informe o número de copias");
                 livro.setCopias(conversor.StringParaDouble(read.readLine()));
                 fldao.facadeCadastrarLivro(livro);
-//                } catch (Exception e) {
-//                    System.err.println("Falha ao realizar a operação");
-//                }
+                } catch (Exception e) {
+                    System.err.println("Falha ao realizar a operação");
+                }
                 break;
 
             case "2":

@@ -10,6 +10,7 @@ import br.com.gemeos.escolacomtdd.model.Aluguel;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 /**
@@ -80,6 +81,8 @@ public class AluguelDao {
             e.printStackTrace();
             em.getTransaction().rollback();
             throw new Exception("Falha ao realisar a função");
+        }finally{
+            PersistenceUtil.closeEntityManagerFactory();
         }
     }
 }
