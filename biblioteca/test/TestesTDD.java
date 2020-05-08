@@ -43,59 +43,55 @@ public class TestesTDD {
     private Conversor conversor = new Conversor();
 //    private CrudAluno cruda = new CrudAluno();
     private MetodosDeAutorEditora metodos = new MetodosDeAutorEditora();
-    private String resposta;
+    private Pessoa resposta;
 
     public TestesTDD() {
     }
 
-    @Test
-    public void testCadrastroAluno() throws ParseException, IOException, Exception {
-
-        aluno.setMatricula(fadao.gerarMatricula());
-        System.out.println("Nome do Aluno");
-        aluno.setNome("testeComMatricula");
-
-        System.out.println("cpf do Aluno");
-        resposta = "123.456.789-10";
-        for (Aluno perc : fadao.listarAlunos()) {
-            if (resposta.equals(perc.getCpf())) {
-                aluno.setCpf(resposta);
-            } else {
-                System.out.println("CPF Invalido");
-                break;
-            }
-        }
-
-        System.out.println("Data  de Nascimento");
-        aluno.setDataDeNascimento(conversor.stringParaData("11/11/1111"));
-
-        System.out.println("Número do telefone");
-        aluno.setTelefone("911111111");
-
-        System.out.println("Email do Aluno");
-        aluno.setEmail("teste@gmail.com");
-
-        System.out.println("Rua do Aluno");
-        endereco.setRua("teste");
-
-        System.out.println("Bairro do Aluno");
-        endereco.setBairro("teste");
-
-        System.out.println("Numero da casa");
-        endereco.setNumero("teste");
-
-        System.out.println("Cidade do Aluno");
-        endereco.setCidade("teste");
-
-        System.out.println("UF do Aluno");
-        endereco.setUf("tt");
-
-        System.out.println("Cep do Aluno");
-        endereco.setCep("11111-111");
-        aluno.setEndereco(endereco);
-
-        fadao.cadastrarAluno(aluno);
-    }
+//    @Test
+//    public void testCadrastroAluno() throws ParseException, IOException, Exception {
+//
+//        aluno.setMatricula(fadao.gerarMatricula());
+//        System.out.println("Nome do Aluno");
+//        aluno.setNome("testeComMatricula");
+//
+//        System.out.println("cpf do Aluno");
+//        aluno.setCpf("123.456.789-99");
+//
+//        System.out.println("Data  de Nascimento");
+//        aluno.setDataDeNascimento(conversor.stringParaData("11/11/1111"));
+//
+//        System.out.println("Número do telefone");
+//        aluno.setTelefone("911111111");
+//
+//        System.out.println("Email do Aluno");
+//        aluno.setEmail("teste@gmail.com");
+//
+//        System.out.println("Rua do Aluno");
+//        endereco.setRua("teste");
+//
+//        System.out.println("Bairro do Aluno");
+//        endereco.setBairro("teste");
+//
+//        System.out.println("Numero da casa");
+//        endereco.setNumero("teste");
+//
+//        System.out.println("Cidade do Aluno");
+//        endereco.setCidade("teste");
+//
+//        System.out.println("UF do Aluno");
+//        endereco.setUf("tt");
+//
+//        System.out.println("Cep do Aluno");
+//        endereco.setCep("11111-111");
+//        aluno.setEndereco(endereco);
+//
+//            if ( fadao.buscarAluno(aluno.getCpf())== null) {
+//                fadao.cadastrarAluno(aluno);
+//            } else {
+//                System.out.println("CPF Invalido");
+//            }
+//    }
 //      @Test
 //    public void testListarDeAlunos() throws Exception {
 //        for (Aluno perc : fadao.listarAlunos()) {
@@ -131,50 +127,55 @@ public class TestesTDD {
 //        fadao.removerAluno(fadao.buscarAluno("123.456.789-10"));
 //        fadao.listarAlunos();
 //    }
+    @Test
+    public void testCadastrarProfessor() throws ParseException, Exception {
 
-//     @Test
-//    public void testCadastrarProfessor() throws ParseException {
-//
-//        System.out.println("Nome do Professor");
-//        prof.setNome("teste");
-//
-//        System.out.println("cpf do Professor");
-//        prof.setCpf("123.456.789-01");
-//
-//        System.out.println("Data  de Nascimento");
-//        prof.setDataDeNascimento(conversor.stringParaData("11/11/1111"));
-//
-//        System.out.println("Número do telefone");
-//        prof.setTelefone("911111111");
-//
-//        System.out.println("Email do Professor");
-//        prof.setEmail("teste@gmail.com");
-//        
-//        System.out.println("Salario do Professor ");
-//        System.out.print("R$ ");
-//        prof.setSalario(conversor.StringParaDouble("150.00"));
-//        
-//        System.out.println("Rua do Aluno");
-//        endereco.setRua("teste");
-//
-//        System.out.println("Bairro do Aluno");
-//        endereco.setBairro("teste");
-//
-//        System.out.println("Numero da casa");
-//        endereco.setNumero("teste");
-//
-//        System.out.println("Cidade do Aluno");
-//        endereco.setCidade("teste");
-//
-//        System.out.println("UF do Aluno");
-//        endereco.setUf("tt");
-//
-//        System.out.println("Cep do Aluno");
-//        endereco.setCep("11111-111");
-//
-//        prof.setEndereco(endereco);
-//        fpdao.facadeCadastrarProfessor(prof);
-//    }
+        System.out.println("Nome do Professor");
+        prof.setNome("teste");
+
+        System.out.println("cpf do Professor");
+        prof.setCpf("123.456.789-77");
+
+        System.out.println("Data  de Nascimento");
+        prof.setDataDeNascimento(conversor.stringParaData("11/11/1111"));
+
+        System.out.println("Número do telefone");
+        prof.setTelefone("911111111");
+
+        System.out.println("Email do Professor");
+        prof.setEmail("teste@gmail.com");
+
+        System.out.println("Salario do Professor ");
+        System.out.print("R$ ");
+        prof.setSalario(conversor.StringParaDouble("150.00"));
+
+        System.out.println("Rua do Aluno");
+        endereco.setRua("teste");
+
+        System.out.println("Bairro do Aluno");
+        endereco.setBairro("teste");
+
+        System.out.println("Numero da casa");
+        endereco.setNumero("teste");
+
+        System.out.println("Cidade do Aluno");
+        endereco.setCidade("teste");
+
+        System.out.println("UF do Aluno");
+        endereco.setUf("tt");
+
+        System.out.println("Cep do Aluno");
+        endereco.setCep("11111-111");
+
+        prof.setEndereco(endereco);
+
+        if (fpdao.facadeBuscarProfessor(prof.getCpf()) == null) {
+            fpdao.facadeCadastrarProfessor(prof);
+
+        } else {
+            System.out.println("CPF Invalido");
+        }
+    }
 //     @Test
 //    public void testListarProfessor() throws Exception{
 //        for(Professor perc: fpdao.facadeListarProfessor()){

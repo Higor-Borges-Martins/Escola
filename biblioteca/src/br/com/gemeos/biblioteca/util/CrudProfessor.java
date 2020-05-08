@@ -42,48 +42,52 @@ public class CrudProfessor {
 
             case "1":
 
-              
-                 try{
-                     System.out.println("Nome do Professor");
-                     prof.setNome(read.readLine());
+                try {
+                    System.out.println("Nome do Professor");
+                    prof.setNome(read.readLine());
 
-                     System.out.println("cpf do Professor");
-                     prof.setCpf(read.readLine());
+                    System.out.println("cpf do Professor");
+                    prof.setCpf(read.readLine());
 
-                     System.out.println("Data  de Nascimento");
-                     prof.setDataDeNascimento(conversor.stringParaData(read.readLine()));
+                    System.out.println("Data  de Nascimento");
+                    prof.setDataDeNascimento(conversor.stringParaData(read.readLine()));
 
-                     System.out.println("Número do telefone");
-                     prof.setTelefone(read.readLine());
+                    System.out.println("Número do telefone");
+                    prof.setTelefone(read.readLine());
 
-                     System.out.println("Email do Professor");
-                     prof.setEmail(read.readLine());
+                    System.out.println("Email do Professor");
+                    prof.setEmail(read.readLine());
 
-                     System.out.println("Sarario do Professor");
-                     prof.setSalario(conversor.StringParaDouble(read.readLine()));
+                    System.out.println("Sarario do Professor");
+                    prof.setSalario(conversor.StringParaDouble(read.readLine()));
 
-                     System.out.println("Rua do Professor");
-                     endereco.setRua(read.readLine());
+                    System.out.println("Rua do Professor");
+                    endereco.setRua(read.readLine());
 
-                     System.out.println("Bairro do Professor");
-                     endereco.setBairro(read.readLine());
+                    System.out.println("Bairro do Professor");
+                    endereco.setBairro(read.readLine());
 
-                     System.out.println("Numero da casa");
-                     endereco.setNumero(read.readLine());
+                    System.out.println("Numero da casa");
+                    endereco.setNumero(read.readLine());
 
-                     System.out.println("Cidade do Professor");
-                     endereco.setCidade(read.readLine());
+                    System.out.println("Cidade do Professor");
+                    endereco.setCidade(read.readLine());
 
-                     System.out.println("UF do Professor");
-                     endereco.setUf(read.readLine());
+                    System.out.println("UF do Professor");
+                    endereco.setUf(read.readLine());
 
-                     System.out.println("Cep do Professor");
-                     endereco.setCep(read.readLine());
+                    System.out.println("Cep do Professor");
+                    endereco.setCep(read.readLine());
 
-                     prof.setEndereco(endereco);
+                    prof.setEndereco(endereco);
 
-                     fpdao.facadeCadastrarProfessor(prof);
-                }catch(Exception e){
+                    if (fpdao.facadeBuscarProfessor(prof.getCpf()) == null) {
+                        fpdao.facadeCadastrarProfessor(prof);
+
+                    } else {
+                        System.out.println("CPF Invalido");
+                    }
+                } catch (Exception e) {
                     System.err.println("Falha ao realizar a operação");
                 }
                 break;
@@ -202,10 +206,10 @@ public class CrudProfessor {
                 try {
                     System.out.println("cpf do Professor");
                     prof = fpdao.facadeBuscarProfessor(read.readLine());
-                    
-                    if(prof != null){
-                    System.out.println(prof);
-                    }else{
+
+                    if (prof != null) {
+                        System.out.println(prof);
+                    } else {
                         System.out.println("Não foi encontrado");
                     }
                 } catch (Exception e) {
@@ -220,4 +224,3 @@ public class CrudProfessor {
         }
     }
 }
-

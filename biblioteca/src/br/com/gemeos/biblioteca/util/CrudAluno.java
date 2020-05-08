@@ -47,16 +47,7 @@ public class CrudAluno {
                     aluno.setNome(read.readLine());
 
                     System.out.println("cpf do Aluno");
-                    resposta = read.readLine();
-                    for (Aluno perc : fadao.listarAlunos()) {
-                        if (!resposta.equals(perc.getCpf())) {
-                            aluno.setCpf(resposta);
-
-                        } else {
-                            System.out.println("CPF Invalido");
-                            break;
-                        }
-                    }
+                    aluno.setCpf(read.readLine());
 
                     System.out.println("Data  de Nascimento");
                     aluno.setDataDeNascimento(conversor.stringParaData(read.readLine()));
@@ -86,8 +77,12 @@ public class CrudAluno {
                     endereco.setCep(read.readLine());
 
                     aluno.setEndereco(endereco);
-
-                    fadao.cadastrarAluno(aluno);
+                  
+                    if (fadao.buscarAluno(aluno.getCpf()) == null) {
+                        fadao.cadastrarAluno(aluno);
+                    } else {
+                        System.out.println("CPF Invalido");
+                    }
                 } catch (Exception e) {
                     System.out.println("Falha ao realizar a operação");
                 }
